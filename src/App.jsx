@@ -73,6 +73,36 @@ function App() {
 
         </div>
       </nav>
+        {/* Hero Section */}
+      <section className="w-full px-6 mt-4">
+        <div className="max-w-7xl mx-auto h-[250px] bg-[#fff4e6] rounded-lg flex items-center justify-between overflow-hidden">
+
+          {/* Left Content */}
+          <div className="ml-16">
+            <h2 className="text-4xl font-bold text-[#064e3b] leading-tight">
+              Grab Upto 50% Off On
+              <br />
+              Selected Headphone
+            </h2>
+
+            <button className="mt-5 bg-[#064e3b] text-white px-7 py-3 rounded-full text-sm">
+              Buy Now
+            </button>
+          </div>
+
+          {/* Right Image */}
+          <div className="h-full mr-16">
+            {/* Image */}
+            <div className="h-[250px] w-[380px] flex items-end justify-center ml-auto mr-8">
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+
 
     </div>
   );
