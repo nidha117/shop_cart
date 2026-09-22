@@ -171,7 +171,16 @@ function App() {
 
         </div>
       </section>
+       {/* Headphones Section */}
+      <section className="w-full bg-white py-8">
+        <div className="max-w-7xl mx-auto px-6">
 
+          {/* Title */}
+          <h2 className="text-2xl font-bold text-black mb-6">
+            Headphones For You!
+          </h2>
+</div>
+</section>
 
 
 
