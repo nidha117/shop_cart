@@ -179,12 +179,320 @@ function App() {
           <h2 className="text-2xl font-bold text-black mb-6">
             Headphones For You!
           </h2>
-</div>
-</section>
+          {/* Products */}
+          <div className="grid grid-cols-4 gap-5">
+
+            {/* Product 1 */}
+            <div>
+              <div className="relative w-[270px]  h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+
+               
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    Wireless Earbuds, IPX8
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $89.00
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  Organic Cotton, fairtrade certified
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+
+            {/* Product 2 */}
+            <div>
+              <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
+
+                
+
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    AirPods Max
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $559.00
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  A perfect balance of high-fidelity audio
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 bg-[#064d3b] text-white rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+
+            {/* Product 3 */}
+            <div>
+              <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
+
+              
+
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    Bose BT Earphones
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $289.00
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  Table with air purifier, stained veneer/black
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+
+            {/* Product 4 */}
+            <div>
+              <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
+
+               
+
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    VIVEFOX Headphones
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $39.00
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  Wired Stereo Headsets With Mic
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+      <div className="px-6 pb-10">
+    <div className="grid grid-cols-4 gap-5">
+
+
+            {/* Product 5 */}
+            <div>
+              <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
+
+             
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    JBL TUNE 600BTNC
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $59.00
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  Premium Bone Conduction Open Ear Bluetooth
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+
+            {/* Product 6 */}
+            <div>
+              <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
+
+              
+
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    TAGRY Bluetooth
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $109.00
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  256, 8 core GPU, 8 GB
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+
+            {/* Product 7 */}
+            <div>
+              <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
+
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    Monster MNFLEX
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $89.75
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  Flex Active Noise Canceling Bluetooth
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+
+            {/* Product 8 */}
+            <div>
+              <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
+
+              
+
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    Mpow CH6
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $569.00
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  Kids Headphones
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </div>
+     
 
 
 
-    </div>
+
+    
   );
 }
 
