@@ -10,7 +10,11 @@ function App() {
           {/* Logo + Shopcart */}
           <div className="flex items-center w-auto">
 
-          
+            <img
+              src="https://i.pinimg.com/originals/11/ba/64/11ba64a31b83b3497045c2e3d8f5d6f3.png"
+              alt="Shopcart Logo"
+              className="w-32 h-[75px]"
+            />
 
             <h1 className="text-2xl font-bold text-[#0b2945] translate-x-[-25px]">
               Shopcart
