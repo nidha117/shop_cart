@@ -186,7 +186,12 @@ function App() {
             <div>
               <div className="relative w-[270px]  h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
 
-               
+                <img
+                  src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
+                  alt="Wireless Earbuds"
+                 className="w-[290px] h-[245px] "
+                />
+
                 <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                   ♡
                 </button>
@@ -222,7 +227,11 @@ function App() {
             <div>
               <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
 
-                
+                <img
+                  src="https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+                  alt="AirPods Max"
+                 className="w-[290px] h-[245px] "
+                />
 
                 <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                   ♡
@@ -259,7 +268,11 @@ function App() {
             <div>
               <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
 
-              
+                <img
+                  src="https://images.unsplash.com/photo-1583394838336-acd977736f90"
+                  alt="Bose BT Earphones"
+                className="w-[290px] h-[245px]"
+                />
 
                 <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                   ♡
@@ -296,7 +309,11 @@ function App() {
             <div>
               <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
 
-               
+                <img
+               src="https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg"
+                  alt="AirPods Max"
+                 className="w-[290px] h-[245px] "
+                />
 
                 <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                   ♡
@@ -340,7 +357,12 @@ function App() {
             <div>
               <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
 
-             
+                <img
+                  src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a"
+                  alt="JBL TUNE 600BTNC"
+                  className="w-[285px] h-[245px]"
+                />
+
                 <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                   ♡
                 </button>
@@ -377,7 +399,11 @@ function App() {
             <div>
               <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
 
-              
+                <img
+                  src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
+                  alt="TAGRY Bluetooth"
+                  className="w-[285px] h-[245px]"
+                />
 
                 <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                   ♡
@@ -415,6 +441,12 @@ function App() {
             <div>
               <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
 
+                <img
+                src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1"
+                  alt="Monster MNFLEX"
+                  className="w-[285px] h-[245px]"
+                />
+
                 <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                   ♡
                 </button>
@@ -451,7 +483,11 @@ function App() {
             <div>
               <div className="relative w-[270px]  h-[250px]  bg-gray-100 rounded-lg flex items-center justify-center">
 
-              
+                <img
+                 src="https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg"
+                  alt="Mpow CH6"
+                  className="w-[285px] h-[245px]"
+                />
 
                 <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                   ♡
