@@ -104,6 +104,73 @@ function App() {
 
         </div>
       </section>
+       {/* Product Filter */}
+      <section className="w-full bg-white">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+
+          {/* Left Filters */}
+          <div className="flex items-center gap-3">
+
+            <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
+              Headphone Type
+              <span className="w-1.5 h-1.5 border-r border-b border-gray-600 rotate-45 -translate-y-0.5"></span>
+            </button>
+
+            <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
+              Price
+              <span className="w-1.5 h-1.5 border-r border-b border-gray-600 rotate-45 -translate-y-0.5"></span>
+            </button>
+
+            <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
+              Review
+              <span className="w-1.5 h-1.5 border-r border-b border-gray-600 rotate-45 -translate-y-0.5"></span>
+            </button>
+
+            <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
+              Color
+              <span className="w-1.5 h-1.5 border-r border-b border-gray-600 rotate-45 -translate-y-0.5"></span>
+            </button>
+            <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
+              Material
+              <span className="w-1.5 h-1.5 border-r border-b border-gray-600 rotate-45 -translate-y-0.5"></span>
+            </button>
+
+            <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
+              Offer
+              <span className="w-1.5 h-1.5 border-r border-b border-gray-600 rotate-45 -translate-y-0.5"></span>
+            </button>
+
+            <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
+              All Filters
+
+              <span className="flex flex-col gap-[1px]">
+                <span className="flex items-center gap-1">
+                  <span className="w-2.5 h-[1px] bg-gray-700"></span>
+                  <span className="w-[3px] h-[3px] rounded-full bg-gray-700"></span>
+                </span>
+
+                <span className="flex items-center gap-1">
+                  <span className="w-[3px] h-[3px] rounded-full bg-gray-700"></span>
+                  <span className="w-2.5 h-[1px] bg-gray-700"></span>
+                </span>
+
+                <span className="flex items-center gap-1">
+                  <span className="w-2.5 h-[1px] bg-gray-700"></span>
+                  <span className="w-[3px] h-[3px] rounded-full bg-gray-700"></span>
+                </span>
+              </span>
+            </button>
+
+          </div>
+
+          {/* Sort */}
+          <button className="bg-white border border-black px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
+            Sort by
+            <span className="w-1.5 h-1.5 border-r border-b border-gray-600 rotate-45 -translate-y-0.5"></span>
+          </button>
+
+        </div>
+      </section>
 
 
 
