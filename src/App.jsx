@@ -1,4 +1,4 @@
-
+import heroImage from "./assets/hero-headphone.jpg.png";
 function App() {
   return (
     <div className="min-h-screen">
@@ -73,7 +73,7 @@ function App() {
 
         </div>
       </nav>
-        {/* Hero Section */}
+      {/* Hero Section */}
       <section className="w-full px-6 mt-4">
         <div className="max-w-7xl mx-auto h-[250px] bg-[#fff4e6] rounded-lg flex items-center justify-between overflow-hidden">
 
@@ -94,7 +94,11 @@ function App() {
           <div className="h-full mr-16">
             {/* Image */}
             <div className="h-[250px] w-[380px] flex items-end justify-center ml-auto mr-8">
-
+              <img
+                src={heroImage}
+                alt="Headphones"
+                className="h-full w-auto object-contain  scale-130"
+              />
             </div>
           </div>
 
