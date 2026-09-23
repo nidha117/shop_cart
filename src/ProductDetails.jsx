@@ -16,11 +16,23 @@ function ProductDetails() {
 
           {/* LEFT SIDE */}
           <div>
-            
+            <div className="h-[640px] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden">
+              <img
+              src="https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+                alt="AirPods Max"
+                className="w-[620px] h-[580px] object-contain"
+              />
+            </div>
+
             {/* Small Images */}
             <div className="flex gap-5 mt-5">
 
-             
+              <div className="w-[140px] h-[140px] bg-gray-100 rounded-lg flex items-center justify-center">
+                <img
+                  src="https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+                  className="w-full h-full object-contain"
+                />
+              </div>
 
               <div className="w-[140px] h-[140px] bg-gray-100 rounded-lg"></div>
 
