@@ -2,6 +2,7 @@ import heroImage from "./assets/hero-headphone.jpg.png";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
 
+
 function Home() {
   return (
     <div className="min-h-screen">
@@ -226,45 +227,47 @@ function Home() {
             </Link>
 
             {/* Product 2 */}
-            <div>
-              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+        <Link to="/product/2">
+  <div>
+    <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
 
-                <img
-                   src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
-                  alt="AirPods Max"
-                  className="w-[290px] h-[245px]"
-                />
+      <img
+        src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
+        alt="AirPods Max"
+        className="w-[290px] h-[245px]"
+      />
 
-                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                  ♡
-                </button>
+      <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+        ♡
+      </button>
 
-              </div>
+    </div>
 
-              <div className="mt-3">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold text-[15px]">
-                    AirPods Max
-                  </h3>
+    <div className="mt-3">
+      <div className="flex justify-between items-center">
+        <h3 className="font-semibold text-[15px]">
+          AirPods Max
+        </h3>
 
-                  <span className="font-bold text-[14px]">
-                    $559.00
-                  </span>
-                </div>
+        <span className="font-bold text-[14px]">
+          $559.00
+        </span>
+      </div>
 
-                <p className="text-xs text-gray-500 mt-2">
-                  A perfect balance of high-fidelity audio
-                </p>
+      <p className="text-xs text-gray-500 mt-2">
+        A perfect balance of high-fidelity audio
+      </p>
 
-                <p className="text-green-600 text-sm mt-2">
-                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                </p>
+      <p className="text-green-600 text-sm mt-2">
+        ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+      </p>
 
-                <button className="mt-3 px-5 py-2 bg-[#064d3b] text-white rounded-full text-sm">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
+      <button className="mt-3 px-5 py-2 bg-[#064d3b] text-white rounded-full text-sm">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</Link>
 
             {/* Product 3 */}
             <div>
@@ -533,6 +536,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<ProductDetails />} />
+        <Route path="/product/2" element={<ProductDetails productId={2} />} />
       </Routes>
     </BrowserRouter>
   );

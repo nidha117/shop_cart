@@ -1,3 +1,7 @@
+import blueHeadphone from "./assets/blue-headphone.png";
+import whiteHeadphone from "./assets/white-headphone.png";
+import lightRedHeadphone from "./assets/red-headphone.png";
+
 function ProductDetails() {
   return (
     <div className="min-h-screen bg-white">
@@ -22,26 +26,48 @@ function ProductDetails() {
               <img
                 src="https://images.unsplash.com/photo-1546435770-a3e426bf472b"
                 alt="AirPods Max"
-                className="w-[480px] h-[410px] object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
 
             {/* Small Images */}
             <div className="flex gap-3 mt-3">
 
-              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg flex items-center justify-center">
+              {/* Black */}
+              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1546435770-a3e426bf472b"
-                  alt="AirPods Max"
-                  className="w-full h-full object-contain"
+                  alt="Black AirPods Max"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
-              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg"></div>
+              {/* White */}
+              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg overflow-hidden">
+                <img
+                  src={whiteHeadphone}
+                  alt="White AirPods Max"
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
-              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg"></div>
+              {/* Red */}
+              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg overflow-hidden">
+                <img
+                  src={lightRedHeadphone}
+                  alt="Light Red AirPods Max"
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
-              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg"></div>
+              {/* Blue */}
+              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg overflow-hidden">
+                <img
+                  src={blueHeadphone}
+                  alt="Blue AirPods Max"
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
             </div>
           </div>
@@ -84,15 +110,13 @@ function ProductDetails() {
 
             <div className="flex gap-3 mt-3">
 
-              <button className="w-8 h-8 rounded-full bg-red-400 ring-2 ring-[#064e3b] ring-offset-2"></button>
+              <button className="w-8 h-8 rounded-full bg-black ring-2 ring-[#064e3b] ring-offset-2"></button>
 
-              <button className="w-8 h-8 rounded-full bg-gray-800"></button>
+              <button className="w-8 h-8 rounded-full bg-white border border-gray-300"></button>
 
-              <button className="w-8 h-8 rounded-full bg-green-100"></button>
+              <button className="w-8 h-8 rounded-full bg-red-500"></button>
 
-              <button className="w-8 h-8 rounded-full bg-gray-200"></button>
-
-              <button className="w-8 h-8 rounded-full bg-slate-700"></button>
+              <button className="w-8 h-8 rounded-full bg-blue-500"></button>
 
             </div>
 
@@ -137,24 +161,24 @@ function ProductDetails() {
             </div>
 
             {/* Delivery */}
-            <div className="border rounded-lg mt-4">
+            <div className="border rounded-lg mt-3">
 
-              <div className="p-3 border-b">
-                <h3 className="font-semibold text-xs">
+              <div className="px-3 py-2 border-b">
+                <h3 className="font-semibold text-[11px]">
                   🚚 Free Delivery
                 </h3>
 
-                <p className="text-xs text-gray-600 mt-1.5 underline">
+                <p className="text-[10px] text-gray-600 mt-1 underline">
                   Enter your Postal code for Delivery Availability
                 </p>
               </div>
 
-              <div className="p-3">
-                <h3 className="font-semibold text-xs">
+              <div className="px-3 py-2">
+                <h3 className="font-semibold text-[11px]">
                   ↩ Return Delivery
                 </h3>
 
-                <p className="text-xs text-gray-600 mt-1.5">
+                <p className="text-[10px] text-gray-600 mt-1">
                   Free 30days Delivery Returns.{" "}
                   <span className="underline">Details</span>
                 </p>
