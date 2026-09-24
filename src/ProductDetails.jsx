@@ -8,6 +8,13 @@ function ProductDetails() {
   const [selectedImage, setSelectedImage] = useState(
     "https://images.unsplash.com/photo-1546435770-a3e426bf472b"
   );
+  const images = [
+  "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
+  whiteHeadphone,
+  lightRedHeadphone,
+  blueHeadphone,
+];
+
   return (
     <div className="min-h-screen bg-white">
 
@@ -26,14 +33,44 @@ function ProductDetails() {
           {/* LEFT SIDE */}
           <div>
 
-            {/* Main Image */}
-            <div className="h-[420px] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden">
-              <img
-                src={selectedImage}
-                alt="AirPods Max"
-                className="w-full h-full object-cover"
-              />
-            </div>
+           <div className="h-[420px] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden relative">
+
+  {/* Previous Arrow */}
+  <button
+    onClick={() => {
+      const currentIndex = images.indexOf(selectedImage);
+
+      if (currentIndex > 0) {
+        setSelectedImage(images[currentIndex - 1]);
+      }
+    }}
+    className="absolute left-3 z-10 bg-white rounded-full w-9 h-9 shadow text-xl"
+  >
+    &lt;
+  </button>
+
+  {/* Main Image */}
+  <img
+    src={selectedImage}
+    alt="AirPods Max"
+    className="w-full h-full object-cover"
+  />
+
+  {/* Next Arrow */}
+  <button
+    onClick={() => {
+      const currentIndex = images.indexOf(selectedImage);
+
+      if (currentIndex < images.length - 1) {
+        setSelectedImage(images[currentIndex + 1]);
+      }
+    }}
+    className="absolute right-3 z-10 bg-white rounded-full w-9 h-9 shadow text-xl"
+  >
+    &gt;
+  </button>
+
+</div>
 
             {/* Small Images */}
             <div className="flex gap-3 mt-3">
