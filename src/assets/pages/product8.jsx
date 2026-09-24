@@ -1,13 +1,13 @@
-function Product4() {
+function Product8() {
   return (
     <div className="min-h-screen bg-white">
 
       {/* Breadcrumb */}
       <div className="max-w-5xl mx-auto px-5 pt-4">
         <p className="text-xs text-gray-500">
-          Electronics / Audio / Headphones /
+          Electronics / Audio / Headphones / Shop Headphones by type /
           <span className="text-black font-semibold">
-            {" "}VIVEFOX Headphones
+            {" "}Mpow CH6
           </span>
         </p>
       </div>
@@ -22,8 +22,8 @@ function Product4() {
             {/* Main Image */}
             <div className="h-[420px] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden">
               <img
-                src="https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg"
-                alt="VIVEFOX Headphones"
+                src="https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg"
+                alt="Mpow CH6"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -33,8 +33,8 @@ function Product4() {
 
               <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg overflow-hidden">
                 <img
-                  src="https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg"
-                  alt="VIVEFOX Headphones"
+                  src="https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg"
+                  alt="Mpow CH6"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -51,28 +51,27 @@ function Product4() {
           {/* RIGHT SIDE */}
           <div>
 
-            {/* Product Name */}
             <h1 className="text-2xl font-bold text-black">
-              VIVEFOX Headphones
+              Mpow CH6
             </h1>
 
-            {/* Description */}
             <p className="text-xs text-gray-600 mt-2 max-w-md">
-              Wired Stereo Headsets With Mic for clear sound and
-              comfortable everyday listening.
+              Kids Headphones
             </p>
 
             {/* Rating */}
             <p className="text-green-600 mt-3 text-sm">
               ★★★★★
-              <span className="text-black ml-2">(121)</span>
+              <span className="text-black ml-2">
+                (121)
+              </span>
             </p>
 
             <hr className="my-4" />
 
             {/* Price */}
             <h2 className="text-xl font-bold text-black">
-              $39.00
+              $569.00
             </h2>
 
             <p className="text-xs text-gray-600 mt-2">
@@ -81,7 +80,7 @@ function Product4() {
 
             <hr className="my-4" />
 
-            {/* Color */}
+            {/* Choose Color */}
             <h3 className="text-base font-semibold">
               Choose a Color
             </h3>
@@ -94,18 +93,18 @@ function Product4() {
               ></button>
 
               <button
-                className="w-8 h-8 rounded-full bg-white border border-gray-300"
-                title="White"
-              ></button>
-
-              <button
                 className="w-8 h-8 rounded-full bg-blue-500"
                 title="Blue"
               ></button>
 
               <button
-                className="w-8 h-8 rounded-full bg-red-500"
-                title="Red"
+                className="w-8 h-8 rounded-full bg-pink-400"
+                title="Pink"
+              ></button>
+
+              <button
+                className="w-8 h-8 rounded-full bg-white border"
+                title="White"
               ></button>
 
             </div>
@@ -133,7 +132,11 @@ function Product4() {
 
               <div>
                 <p className="font-semibold text-xs">
-                  Only <span className="text-orange-500">12 Items</span> Left!
+                  Only{" "}
+                  <span className="text-orange-500">
+                    12 Items
+                  </span>{" "}
+                  Left!
                 </p>
 
                 <p className="text-xs text-gray-600">
@@ -196,4 +199,4 @@ function Product4() {
   );
 }
 
-export default Product4;
+export default Product8;

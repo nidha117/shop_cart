@@ -1,8 +1,13 @@
+import { useState } from "react";
+
 import blueHeadphone from "./assets/blue-headphone.png";
 import whiteHeadphone from "./assets/white-headphone.png";
 import lightRedHeadphone from "./assets/red-headphone.png";
 
 function ProductDetails() {
+  const [selectedImage, setSelectedImage] = useState(
+    "https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+  );
   return (
     <div className="min-h-screen bg-white">
 
@@ -24,7 +29,7 @@ function ProductDetails() {
             {/* Main Image */}
             <div className="h-[420px] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+                src={selectedImage}
                 alt="AirPods Max"
                 className="w-full h-full object-cover"
               />
@@ -110,13 +115,33 @@ function ProductDetails() {
 
             <div className="flex gap-3 mt-3">
 
-              <button className="w-8 h-8 rounded-full bg-black ring-2 ring-[#064e3b] ring-offset-2"></button>
+              {/* Black */}
+              <button
+                onClick={() =>
+                  setSelectedImage(
+                    "https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+                  )
+                }
+                className="w-8 h-8 rounded-full bg-black ring-2 ring-[#064e3b] "
+              ></button>
 
-              <button className="w-8 h-8 rounded-full bg-white border border-gray-300"></button>
+              {/* White */}
+              <button
+                onClick={() => setSelectedImage(whiteHeadphone)}
+                className="w-8 h-8 rounded-full bg-white border border-gray-300"
+              ></button>
 
-              <button className="w-8 h-8 rounded-full bg-red-500"></button>
+              {/* Red */}
+              <button
+                onClick={() => setSelectedImage(lightRedHeadphone)}
+                className="w-8 h-8 rounded-full bg-red-500"
+              ></button>
 
-              <button className="w-8 h-8 rounded-full bg-blue-500"></button>
+              {/* Blue */}
+              <button
+                onClick={() => setSelectedImage(blueHeadphone)}
+                className="w-8 h-8 rounded-full bg-blue-500"
+              ></button>
 
             </div>
 

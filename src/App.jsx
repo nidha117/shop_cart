@@ -1,6 +1,14 @@
 import heroImage from "./assets/hero-headphone.jpg.png";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
+import Product2 from "./assets/pages/Product2";
+import Product3 from "./assets/pages/Product3";
+import Product4 from "./assets/pages/Product4";
+import Product5 from "./assets/pages/Product5";
+import Product6 from "./assets/pages/Product6";
+import Product7 from "./assets/pages/Product7";
+import Product8 from "./assets/pages/product8";
+
 
 
 function Home() {
@@ -188,7 +196,7 @@ function Home() {
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
 
                   <img
-                     src="https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+                    src="https://images.unsplash.com/photo-1546435770-a3e426bf472b"
                     alt="Wireless Earbuds"
                     className="w-[290px] h-[245px]"
                   />
@@ -227,118 +235,293 @@ function Home() {
             </Link>
 
             {/* Product 2 */}
-        <Link to="/product/2">
-  <div>
-    <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+            <Link to="/product/2">
+              <div>
 
-      <img
-        src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
-        alt="AirPods Max"
-        className="w-[290px] h-[245px]"
-      />
+                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
 
-      <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-        ♡
-      </button>
+                  <img
+                    src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
+                    alt="AirPods Max"
+                    className="w-[290px] h-[245px]"
+                  />
 
-    </div>
+                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                    ♡
+                  </button>
 
-    <div className="mt-3">
-      <div className="flex justify-between items-center">
-        <h3 className="font-semibold text-[15px]">
-          AirPods Max
-        </h3>
+                </div>
 
-        <span className="font-bold text-[14px]">
-          $559.00
-        </span>
-      </div>
+                <div className="mt-3">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-semibold text-[15px]">
+                      AirPods Max
+                    </h3>
 
-      <p className="text-xs text-gray-500 mt-2">
-        A perfect balance of high-fidelity audio
-      </p>
+                    <span className="font-bold text-[14px]">
+                      $559.00
+                    </span>
+                  </div>
 
-      <p className="text-green-600 text-sm mt-2">
-        ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-      </p>
+                  <p className="text-xs text-gray-500 mt-2">
+                    A perfect balance of high-fidelity audio
+                  </p>
 
-      <button className="mt-3 px-5 py-2 bg-[#064d3b] text-white rounded-full text-sm">
-        Add to Cart
-      </button>
-    </div>
-  </div>
-</Link>
+                  <p className="text-green-600 text-sm mt-2">
+                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                  </p>
+
+                  <button className="mt-3 px-5 py-2 bg-[#064d3b] text-white rounded-full text-sm">
+                    Add to Cart
+                  </button>
+                </div>
+
+              </div>
+            </Link>
 
             {/* Product 3 */}
-            <div>
-              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+            <Link to="/product/3">
+              <div>
 
-                <img
-                  src="https://images.unsplash.com/photo-1583394838336-acd977736f90"
-                  alt="Bose BT Earphones"
-                  className="w-[290px] h-[245px]"
-                />
+                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
 
-                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                  ♡
-                </button>
+                  <img
+                    src="https://images.unsplash.com/photo-1583394838336-acd977736f90"
+                    alt="Bose BT Earphones"
+                    className="w-[290px] h-[245px]"
+                  />
 
-              </div>
+                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                    ♡
+                  </button>
 
-              <div className="mt-3">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold text-[15px]">
-                    Bose BT Earphones
-                  </h3>
-
-                  <span className="font-bold text-[14px]">
-                    $289.00
-                  </span>
                 </div>
 
-                <p className="text-xs text-gray-500 mt-2">
-                  Table with air purifier, stained veneer/black
-                </p>
+                <div className="mt-3">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-semibold text-[15px]">
+                      Bose BT Earphones
+                    </h3>
 
-                <p className="text-green-600 text-sm mt-2">
-                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                </p>
+                    <span className="font-bold text-[14px]">
+                      $289.00
+                    </span>
+                  </div>
 
-                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
-                  Add to Cart
-                </button>
+                  <p className="text-xs text-gray-500 mt-2">
+                    Table with air purifier, stained veneer/black
+                  </p>
+
+                  <p className="text-green-600 text-sm mt-2">
+                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                  </p>
+
+                  <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                    Add to Cart
+                  </button>
+                </div>
+
               </div>
-            </div>
+            </Link>
 
             {/* Product 4 */}
-            <div>
-              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+            <Link to="/product/4">
+              <div>
 
+                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+
+                  <img
+                    src="https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg"
+                    alt="VIVEFOX Headphones"
+                    className="w-[290px] h-[245px]"
+                  />
+
+                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                    ♡
+                  </button>
+
+                </div>
+
+                <div className="mt-3">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-semibold text-[15px]">
+                      VIVEFOX Headphones
+                    </h3>
+
+                    <span className="font-bold text-[14px]">
+                      $39.00
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-gray-500 mt-2">
+                    Wired Stereo Headsets With Mic
+                  </p>
+
+                  <p className="text-green-600 text-sm mt-2">
+                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                  </p>
+
+                  <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                    Add to Cart
+                  </button>
+                </div>
+
+              </div>
+            </Link>
+
+            {/* Product 5 */}
+           {/* Product 5 */}
+<Link to="/product/5">
+  <div>
+              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
                 <img
-                  src="https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg"
-                  alt="VIVEFOX Headphones"
-                  className="w-[290px] h-[245px]"
+                  src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a"
+                  alt="JBL TUNE 600BTNC"
+                  className="w-[285px] h-[245px]"
                 />
 
                 <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                   ♡
                 </button>
-
               </div>
 
               <div className="mt-3">
                 <div className="flex justify-between items-center">
                   <h3 className="font-semibold text-[15px]">
-                    VIVEFOX Headphones
+                    JBL TUNE 600BTNC
                   </h3>
 
                   <span className="font-bold text-[14px]">
-                    $39.00
+                    $59.00
                   </span>
                 </div>
 
                 <p className="text-xs text-gray-500 mt-2">
-                  Wired Stereo Headsets With Mic
+                  Premium Bone Conduction Open Ear Bluetooth
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+              </div>
+</Link>
+
+
+            {/* Product 6 */}
+           <Link to="/product/6">
+  <div>
+              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+                <img
+                  src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
+                  alt="TAGRY Bluetooth"
+                  className="w-[285px] h-[245px]"
+                />
+
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    TAGRY Bluetooth
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $109.00
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  256, 8 core GPU, 8 GB
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+           </div>
+</Link>
+
+            {/* Product 7 */}
+            <Link to="/product/7">
+  <div>
+              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+                <img
+                  src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1"
+                  alt="Monster MNFLEX"
+                  className="w-[285px] h-[245px]"
+                />
+
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    Monster MNFLEX
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $89.75
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  Flex Active Noise Canceling Bluetooth
+                </p>
+
+                <p className="text-green-600 text-sm mt-2">
+                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                </p>
+
+                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  Add to Cart
+                </button>
+              </div>
+             </div>
+</Link>
+
+            {/* Product 8 */}
+            <Link to="/Product/8">
+  <div>
+              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+                <img
+                  src="https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg"
+                  alt="Mpow CH6"
+                  className="w-[285px] h-[245px]"
+                />
+
+                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                  ♡
+                </button>
+              </div>
+
+              <div className="mt-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-[15px]">
+                    Mpow CH6
+                  </h3>
+
+                  <span className="font-bold text-[14px]">
+                    $569.00
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  Kids Headphones
                 </p>
 
                 <p className="text-green-600 text-sm mt-2">
@@ -350,183 +533,14 @@ function Home() {
                 </button>
               </div>
             </div>
-
+</Link>
           </div>
         </div>
+        
       </section>
 
-      {/* Products 5 - 8 */}
-      <div className="px-6 pb-10">
-        <div className="grid grid-cols-4 gap-5">
-
-          {/* Product 5 */}
-          <div>
-            <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-              <img
-                src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a"
-                alt="JBL TUNE 600BTNC"
-                className="w-[285px] h-[245px]"
-              />
-
-              <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                ♡
-              </button>
-
-            </div>
-
-            <div className="mt-3">
-              <div className="flex justify-between items-center">
-                <h3 className="font-semibold text-[15px]">
-                  JBL TUNE 600BTNC
-                </h3>
-
-                <span className="font-bold text-[14px]">
-                  $59.00
-                </span>
-              </div>
-
-              <p className="text-xs text-gray-500 mt-2">
-                Premium Bone Conduction Open Ear Bluetooth
-              </p>
-
-              <p className="text-green-600 text-sm mt-2">
-                ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-              </p>
-
-              <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-
-          {/* Product 6 */}
-          <div>
-            <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-              <img
-                src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
-                alt="TAGRY Bluetooth"
-                className="w-[285px] h-[245px]"
-              />
-
-              <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                ♡
-              </button>
-
-            </div>
-
-            <div className="mt-3">
-              <div className="flex justify-between items-center">
-                <h3 className="font-semibold text-[15px]">
-                  TAGRY Bluetooth
-                </h3>
-
-                <span className="font-bold text-[14px]">
-                  $109.00
-                </span>
-              </div>
-
-              <p className="text-xs text-gray-500 mt-2">
-                256, 8 core GPU, 8 GB
-              </p>
-
-              <p className="text-green-600 text-sm mt-2">
-                ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-              </p>
-
-              <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-
-          {/* Product 7 */}
-          <div>
-            <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-              <img
-                src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1"
-                alt="Monster MNFLEX"
-                className="w-[285px] h-[245px]"
-              />
-
-              <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                ♡
-              </button>
-
-            </div>
-
-            <div className="mt-3">
-              <div className="flex justify-between items-center">
-                <h3 className="font-semibold text-[15px]">
-                  Monster MNFLEX
-                </h3>
-
-                <span className="font-bold text-[14px]">
-                  $89.75
-                </span>
-              </div>
-
-              <p className="text-xs text-gray-500 mt-2">
-                Flex Active Noise Canceling Bluetooth
-              </p>
-
-              <p className="text-green-600 text-sm mt-2">
-                ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-              </p>
-
-              <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-
-          {/* Product 8 */}
-          <div>
-            <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-              <img
-                src="https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg"
-                alt="Mpow CH6"
-                className="w-[285px] h-[245px]"
-              />
-
-              <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                ♡
-              </button>
-
-            </div>
-
-            <div className="mt-3">
-              <div className="flex justify-between items-center">
-                <h3 className="font-semibold text-[15px]">
-                  Mpow CH6
-                </h3>
-
-                <span className="font-bold text-[14px]">
-                  $569.00
-                </span>
-              </div>
-
-              <p className="text-xs text-gray-500 mt-2">
-                Kids Headphones
-              </p>
-
-              <p className="text-green-600 text-sm mt-2">
-                ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-              </p>
-
-              <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
     </div>
+   
   );
 }
 
@@ -536,10 +550,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<ProductDetails />} />
-        <Route path="/product/2" element={<ProductDetails productId={2} />} />
+        <Route path="/product/2" element={<Product2 />} />
+        <Route path="/product/3" element={<Product3 />} />
+        <Route path="/product/4" element={<Product4 />} />
+        <Route path="/product/5" element={<Product5 />} />
+        <Route path="/product/6" element={<Product6 />} />
+         <Route path="/product/7" element={<Product7 />} />
+         <Route path="/product/8" element={<Product8 />} />
+
       </Routes>
     </BrowserRouter>
   );
 }
 
-export default App;
+export default App; 
