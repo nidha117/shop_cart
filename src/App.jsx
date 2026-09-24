@@ -190,7 +190,7 @@ function Home() {
           <div className="grid grid-cols-4 gap-5">
 
             {/* Product 1 */}
-            <Link to="/product">
+           <Link to="/product/1">
               <div className="cursor-pointer">
 
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
@@ -495,7 +495,7 @@ function Home() {
 </Link>
 
             {/* Product 8 */}
-            <Link to="/Product/8">
+            <Link to="/product/8"> 
   <div>
               <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
                 <img
@@ -546,20 +546,23 @@ function Home() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/product" element={<ProductDetails />} />
-        <Route path="/product/2" element={<Product2 />} />
-        <Route path="/product/3" element={<Product3 />} />
-        <Route path="/product/4" element={<Product4 />} />
-        <Route path="/product/5" element={<Product5 />} />
-        <Route path="/product/6" element={<Product6 />} />
-         <Route path="/product/7" element={<Product7 />} />
-         <Route path="/product/8" element={<Product8 />} />
+   <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Home />} />
 
-      </Routes>
-    </BrowserRouter>
+    {/* Dynamic Product Route */}
+    <Route path="/product/:id" element={<ProductDetails />} />
+
+    {/* Old routes — ippo delete cheyyanda */}
+    <Route path="/product/2" element={<Product2 />} />
+    <Route path="/product/3" element={<Product3 />} />
+    <Route path="/product/4" element={<Product4 />} />
+    <Route path="/product/5" element={<Product5 />} />
+    <Route path="/product/6" element={<Product6 />} />
+    <Route path="/product/7" element={<Product7 />} />
+    <Route path="/product/8" element={<Product8 />} />
+  </Routes>
+</BrowserRouter>
   );
 }
 

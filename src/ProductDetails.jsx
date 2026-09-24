@@ -1,19 +1,38 @@
+
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 import blueHeadphone from "./assets/blue-headphone.png";
 import whiteHeadphone from "./assets/white-headphone.png";
 import lightRedHeadphone from "./assets/red-headphone.png";
 
+const products = {
+  1: {
+    name: "Airpods Max",
+    price: "$549.00 or 99.99/month",
+    description:
+      "a perfect balance of exhilarating high-fidelity audio and the effortless magic of AirPods.",
+    rating: 121,
+
+    images: [
+      "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
+      whiteHeadphone,
+      lightRedHeadphone,
+      blueHeadphone,
+    ],
+  },
+};
+
 function ProductDetails() {
+  const { id } = useParams();
+  const product = products[id];
+  
+
+
   const [selectedImage, setSelectedImage] = useState(
-    "https://images.unsplash.com/photo-1546435770-a3e426bf472b"
+    product.images[0]
   );
-  const images = [
-  "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
-  whiteHeadphone,
-  lightRedHeadphone,
-  blueHeadphone,
-];
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -22,7 +41,9 @@ function ProductDetails() {
       <div className="max-w-5xl mx-auto px-5 pt-4">
         <p className="text-xs text-gray-500">
           Electronics / Audio / Headphones / Shop Headphones by type /
-          <span className="text-black font-semibold"> airpods-max</span>
+          <span className="text-black font-semibold">
+            {product.name}
+          </span>
         </p>
       </div>
 
@@ -33,83 +54,61 @@ function ProductDetails() {
           {/* LEFT SIDE */}
           <div>
 
-           <div className="h-[420px] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden relative">
+            {/* Main Image */}
+            <div className="h-[420px] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden relative">
 
-  {/* Previous Arrow */}
-  <button
-    onClick={() => {
-      const currentIndex = images.indexOf(selectedImage);
+              {/* Previous Arrow */}
+              <button
+                onClick={() => {
+                  const currentIndex = product.images.indexOf(selectedImage);
 
-      if (currentIndex > 0) {
-        setSelectedImage(images[currentIndex - 1]);
-      }
-    }}
-    className="absolute left-3 z-10 bg-white rounded-full w-9 h-9 shadow text-xl"
-  >
-    &lt;
-  </button>
+                  if (currentIndex > 0) {
+                    setSelectedImage(product.images[currentIndex - 1]);
+                  }
+                }}
+                className="absolute left-3 z-10 bg-white rounded-full w-9 h-9 shadow text-xl"
+              >
+                &lt;
+              </button>
 
-  {/* Main Image */}
-  <img
-    src={selectedImage}
-    alt="AirPods Max"
-    className="w-full h-full object-cover"
-  />
+              {/* Main Image */}
+              <img
+                src={selectedImage}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
 
-  {/* Next Arrow */}
-  <button
-    onClick={() => {
-      const currentIndex = images.indexOf(selectedImage);
+              {/* Next Arrow */}
+              <button
+                onClick={() => {
+                  const currentIndex = product.images.indexOf(selectedImage);
 
-      if (currentIndex < images.length - 1) {
-        setSelectedImage(images[currentIndex + 1]);
-      }
-    }}
-    className="absolute right-3 z-10 bg-white rounded-full w-9 h-9 shadow text-xl"
-  >
-    &gt;
-  </button>
+                  if (currentIndex < product.images.length - 1) {
+                    setSelectedImage(product.images[currentIndex + 1]);
+                  }
+                }}
+                className="absolute right-3 z-10 bg-white rounded-full w-9 h-9 shadow text-xl"
+              >
+                &gt;
+              </button>
 
-</div>
+            </div>
 
             {/* Small Images */}
             <div className="flex gap-3 mt-3">
 
-              {/* Black */}
-              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1546435770-a3e426bf472b"
-                  alt="Black AirPods Max"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* White */}
-              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg overflow-hidden">
-                <img
-                  src={whiteHeadphone}
-                  alt="White AirPods Max"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Red */}
-              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg overflow-hidden">
-                <img
-                  src={lightRedHeadphone}
-                  alt="Light Red AirPods Max"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Blue */}
-              <div className="w-[85px] h-[85px] bg-gray-100 rounded-lg overflow-hidden">
-                <img
-                  src={blueHeadphone}
-                  alt="Blue AirPods Max"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              {product.images.map((image, index) => (
+                <div
+                  key={index}
+                  className="w-[85px] h-[85px] bg-gray-100 rounded-lg overflow-hidden"
+                >
+                  <img
+                    src={image}
+                    alt={`Product ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
 
             </div>
           </div>
@@ -118,25 +117,25 @@ function ProductDetails() {
           <div className="pt-0">
 
             <h1 className="text-2xl font-bold text-black">
-              Airpods- Max
+              {product.name}
             </h1>
 
             <p className="text-xs text-gray-600 mt-2 max-w-md">
-              a perfect balance of exhilarating high-fidelity audio and the
-              effortless magic of AirPods.
+              {product.description}
             </p>
 
             {/* Rating */}
             <p className="text-green-600 mt-3 text-sm">
               ★★★★★
-              <span className="text-black ml-2">(121)</span>
+              <span className="text-black ml-2">
+                ({product.rating})
+              </span>
             </p>
-
             <hr className="my-4" />
 
             {/* Price */}
             <h2 className="text-xl font-bold text-black">
-              $549.00 or 99.99/month
+              {product.price}
             </h2>
 
             <p className="text-xs text-gray-600 mt-2">
@@ -152,33 +151,20 @@ function ProductDetails() {
 
             <div className="flex gap-3 mt-3">
 
-              {/* Black */}
-              <button
-                onClick={() =>
-                  setSelectedImage(
-                    "https://images.unsplash.com/photo-1546435770-a3e426bf472b"
-                  )
-                }
-                className="w-8 h-8 rounded-full bg-black ring-2 ring-[#064e3b] "
-              ></button>
-
-              {/* White */}
-              <button
-                onClick={() => setSelectedImage(whiteHeadphone)}
-                className="w-8 h-8 rounded-full bg-white border border-gray-300"
-              ></button>
-
-              {/* Red */}
-              <button
-                onClick={() => setSelectedImage(lightRedHeadphone)}
-                className="w-8 h-8 rounded-full bg-red-500"
-              ></button>
-
-              {/* Blue */}
-              <button
-                onClick={() => setSelectedImage(blueHeadphone)}
-                className="w-8 h-8 rounded-full bg-blue-500"
-              ></button>
+              {product.images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedImage(image)}
+                  className={`w-8 h-8 rounded-full ${index === 0
+                    ? "bg-black ring-2 ring-[#064e3b]"
+                    : index === 1
+                      ? "bg-white border border-gray-300"
+                      : index === 2
+                        ? "bg-red-500"
+                        : "bg-blue-500"
+                    }`}
+                ></button>
+              ))}
 
             </div>
 
@@ -257,3 +243,5 @@ function ProductDetails() {
 }
 
 export default ProductDetails;
+
+
