@@ -7,14 +7,122 @@ import Profile from "./Profile";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [showSort, setShowSort] = useState(false);
 
   const [addedProducts, setAddedProducts] = useState(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     return cart.map((item) => item.id);
   });
 
-  const matchesSearch = (productName) =>
-    productName.toLowerCase().includes(searchTerm.toLowerCase());
+  const products = [
+    {
+      id: "1",
+      name: "Wireless Earbuds, IPX8",
+      price: 89,
+      priceText: "$89.00",
+      image:
+        "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
+      description: "Organic Cotton, fairtrade certified",
+      cartImage:
+        "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
+    },
+    {
+      id: "2",
+      name: "AirPods Max",
+      price: 559,
+      priceText: "$559.00",
+      image:
+        "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+      description: "A perfect balance of high-fidelity audio",
+      cartImage:
+        "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+    },
+    {
+      id: "3",
+      name: "Bose BT Earphones",
+      price: 289,
+      priceText: "$289.00",
+      image:
+        "https://images.unsplash.com/photo-1583394838336-acd977736f90",
+      description: "Table with air purifier, stained veneer/black",
+      cartImage:
+        "https://images.unsplash.com/photo-1583394838336-acd977736f90",
+    },
+    {
+      id: "4",
+      name: "VIVEFOX Headphones",
+      price: 39,
+      priceText: "$39.00",
+      image:
+        "https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg",
+      description: "Wired Stereo Headsets With Mic",
+      cartImage:
+        "https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg",
+    },
+    {
+      id: "5",
+      name: "JBL TUNE 600BTNC",
+      price: 59,
+      priceText: "$59.00",
+      image:
+        "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a",
+      description: "Premium Bone Conduction Open Ear Bluetooth",
+      cartImage:
+        "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a",
+    },
+    {
+      id: "6",
+      name: "TAGRY Bluetooth",
+      price: 109,
+      priceText: "$109.00",
+      image:
+        "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+      description: "256, 8 core GPU, 8 GB",
+      cartImage:
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+    },
+    {
+      id: "7",
+      name: "Monster MNFLEX",
+      price: 89.75,
+      priceText: "$89.75",
+      image:
+        "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1",
+      description: "Flex Active Noise Canceling Bluetooth",
+      cartImage:
+        "https://images.unsplash.com/photo-1484704849700-f032a568e944",
+    },
+    {
+      id: "8",
+      name: "Mpow CH6",
+      price: 569,
+      priceText: "$569.00",
+      image:
+        "https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg",
+      description: "Kids Headphones",
+      cartImage:
+        "https://images.unsplash.com/photo-1484704849700-f032a568e944",
+    },
+  ];
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleAddToCart = (product) => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.priceText,
+      image: product.cartImage,
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    setAddedProducts([...addedProducts, product.id]);
+  };
 
   return (
     <div className="min-h-screen">
@@ -23,7 +131,6 @@ function Home() {
       <nav className="w-full border-b bg-white">
         <div className="max-w-7xl mx-auto px-6 py-0 flex items-center justify-between">
 
-          {/* Logo + Shopcart */}
           <div className="flex items-center w-auto">
             <img
               src="https://i.pinimg.com/originals/11/ba/64/11ba64a31b83b3497045c2e3d8f5d6f3.png"
@@ -36,7 +143,6 @@ function Home() {
             </h1>
           </div>
 
-          {/* Navigation */}
           <div className="flex items-center gap-10 text-[16px]">
             <a href="#" className="text-gray-700 hover:text-black">
               Categories
@@ -55,7 +161,6 @@ function Home() {
             </a>
           </div>
 
-          {/* Search */}
           <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 w-64 text-[17px]">
             <span className="text-gray-400 mr-2">
               ⌕
@@ -70,7 +175,6 @@ function Home() {
             />
           </div>
 
-          {/* Right side */}
           <div className="flex items-center gap-5 text-[16px]">
             <Link to="/profile" className="cursor-pointer">
               👤 Account
@@ -172,10 +276,44 @@ function Home() {
 
           </div>
 
-          <button className="bg-white border border-black px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
-            Sort by
-            <span className="w-1.5 h-1.5 border-r border-b border-gray-600 rotate-45 -translate-y-0.5"></span>
-          </button>
+          {/* Sort By */}
+          <div className="relative">
+            <button
+              onClick={() => setShowSort(!showSort)}
+              className="bg-white border border-black px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2"
+            >
+              Sort by
+
+              <span className="w-1.5 h-1.5 border-r border-b border-gray-600 rotate-45 -translate-y-0.5"></span>
+            </button>
+
+            {showSort && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
+
+                <button
+                  onClick={() => setShowSort(false)}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                >
+                  Default
+                </button>
+
+                <button
+                  onClick={() => setShowSort(false)}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                >
+                  Price: Low to High
+                </button>
+
+                <button
+                  onClick={() => setShowSort(false)}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                >
+                  Price: High to Low
+                </button>
+
+              </div>
+            )}
+          </div>
 
         </div>
       </section>
@@ -190,617 +328,82 @@ function Home() {
             </p>
           )}
 
-          {/* Products */}
           <div className="grid grid-cols-4 gap-5">
 
-            {/* Product 1 */}
-            <Link
-              to="/product/1"
-              className={
-                matchesSearch("Wireless Earbuds, IPX8") ? "" : "hidden"
-              }
-            >
-              <div className="cursor-pointer">
+            {filteredProducts.map((product) => (
+              <Link
+                key={product.id}
+                to={`/product/${product.id}`}
+              >
+                <div className="cursor-pointer">
 
-                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+                  <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
 
-                  <img
-                    src="https://images.unsplash.com/photo-1546435770-a3e426bf472b"
-                    alt="Wireless Earbuds"
-                    className="w-[290px] h-[245px]"
-                  />
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-[290px] h-[245px]"
+                    />
 
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    ♡
-                  </button>
+                    <button
+                      onClick={(e) => e.preventDefault()}
+                      className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center"
+                    >
+                      ♡
+                    </button>
 
-                </div>
-
-                <div className="mt-3">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-[15px]">
-                      Wireless Earbuds, IPX8
-                    </h3>
-
-                    <span className="font-bold text-[14px]">
-                      $89.00
-                    </span>
                   </div>
 
-                  <p className="text-xs text-gray-500 mt-2">
-                    Organic Cotton, fairtrade certified
-                  </p>
+                  <div className="mt-3">
 
-                  <p className="text-green-600 text-sm mt-2">
-                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                  </p>
+                    <div className="flex justify-between items-center">
+                      <h3 className="font-semibold text-[15px]">
+                        {product.name}
+                      </h3>
 
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
+                      <span className="font-bold text-[14px]">
+                        {product.priceText}
+                      </span>
+                    </div>
 
-                      const cart =
-                        JSON.parse(localStorage.getItem("cart")) || [];
+                    <p className="text-xs text-gray-500 mt-2">
+                      {product.description}
+                    </p>
 
-                      cart.push({
-                        id: "1",
-                        name: "Wireless Earbuds, IPX8",
-                        price: "$89.00",
-                        image:
-                          "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
-                      });
+                    <p className="text-green-600 text-sm mt-2">
+                      ★★★★★{" "}
+                      <span className="text-gray-500 text-xs">
+                        (121)
+                      </span>
+                    </p>
 
-                      localStorage.setItem("cart", JSON.stringify(cart));
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleAddToCart(product);
+                      }}
+                      className={`mt-3 px-5 py-2 rounded-full text-sm ${
+                        addedProducts.includes(product.id)
+                          ? "bg-[#064e3b] text-white"
+                          : "border border-gray-400"
+                      }`}
+                    >
+                      Add to Cart
+                    </button>
 
-                      setAddedProducts([...addedProducts, "1"]);
-                    }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
-                      addedProducts.includes("1")
-                        ? "bg-[#064e3b] text-white"
-                        : "border border-gray-400"
-                    }`}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-
-              </div>
-            </Link>
-
-            {/* Product 2 */}
-            <Link
-              to="/product/2"
-              className={matchesSearch("AirPods Max") ? "" : "hidden"}
-            >
-              <div>
-
-                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-                  <img
-                    src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
-                    alt="AirPods Max"
-                    className="w-[290px] h-[245px]"
-                  />
-
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    ♡
-                  </button>
-
-                </div>
-
-                <div className="mt-3">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-[15px]">
-                      AirPods Max
-                    </h3>
-
-                    <span className="font-bold text-[14px]">
-                      $559.00
-                    </span>
                   </div>
 
-                  <p className="text-xs text-gray-500 mt-2">
-                    A perfect balance of high-fidelity audio
-                  </p>
-
-                  <p className="text-green-600 text-sm mt-2">
-                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                  </p>
-
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-
-                      const cart =
-                        JSON.parse(localStorage.getItem("cart")) || [];
-
-                      cart.push({
-                        id: "2",
-                        name: "AirPods Max",
-                        price: "$559.00",
-                        image:
-                          "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
-                      });
-
-                      localStorage.setItem("cart", JSON.stringify(cart));
-
-                      setAddedProducts([...addedProducts, "2"]);
-                    }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
-                      addedProducts.includes("2")
-                        ? "bg-[#064e3b] text-white"
-                        : "border border-gray-400"
-                    }`}
-                  >
-                    Add to Cart
-                  </button>
                 </div>
-
-              </div>
-            </Link>
-
-            {/* Product 3 */}
-            <Link
-              to="/product/3"
-              className={
-                matchesSearch("Bose BT Earphones") ? "" : "hidden"
-              }
-            >
-              <div>
-
-                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-                  <img
-                    src="https://images.unsplash.com/photo-1583394838336-acd977736f90"
-                    alt="Bose BT Earphones"
-                    className="w-[290px] h-[245px]"
-                  />
-
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    ♡
-                  </button>
-
-                </div>
-
-                <div className="mt-3">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-[15px]">
-                      Bose BT Earphones
-                    </h3>
-
-                    <span className="font-bold text-[14px]">
-                      $289.00
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-gray-500 mt-2">
-                    Table with air purifier, stained veneer/black
-                  </p>
-
-                  <p className="text-green-600 text-sm mt-2">
-                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                  </p>
-
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-
-                      const cart =
-                        JSON.parse(localStorage.getItem("cart")) || [];
-
-                      cart.push({
-                        id: "3",
-                        name: "Bose BT Earphones",
-                        price: "$289.00",
-                        image:
-                          "https://images.unsplash.com/photo-1583394838336-acd977736f90",
-                      });
-
-                      localStorage.setItem("cart", JSON.stringify(cart));
-
-                      setAddedProducts([...addedProducts, "3"]);
-                    }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
-                      addedProducts.includes("3")
-                        ? "bg-[#064e3b] text-white"
-                        : "border border-gray-400"
-                    }`}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-
-              </div>
-            </Link>
-
-            {/* Product 4 */}
-            <Link
-              to="/product/4"
-              className={
-                matchesSearch("VIVEFOX Headphones") ? "" : "hidden"
-              }
-            >
-              <div>
-
-                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-                  <img
-                    src="https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg"
-                    alt="VIVEFOX Headphones"
-                    className="w-[290px] h-[245px]"
-                  />
-
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    ♡
-                  </button>
-
-                </div>
-
-                <div className="mt-3">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-[15px]">
-                      VIVEFOX Headphones
-                    </h3>
-
-                    <span className="font-bold text-[14px]">
-                      $39.00
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-gray-500 mt-2">
-                    Wired Stereo Headsets With Mic
-                  </p>
-
-                  <p className="text-green-600 text-sm mt-2">
-                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                  </p>
-
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-
-                      const cart =
-                        JSON.parse(localStorage.getItem("cart")) || [];
-
-                      cart.push({
-                        id: "4",
-                        name: "VIVEFOX Headphones",
-                        price: "$39.00",
-                        image:
-                          "https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg",
-                      });
-
-                      localStorage.setItem("cart", JSON.stringify(cart));
-
-                      setAddedProducts([...addedProducts, "4"]);
-                    }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
-                      addedProducts.includes("4")
-                        ? "bg-[#064e3b] text-white"
-                        : "border border-gray-400"
-                    }`}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-
-              </div>
-            </Link>
-
-            {/* Product 5 */}
-            <Link
-              to="/product/5"
-              className={
-                matchesSearch("JBL TUNE 600BTNC") ? "" : "hidden"
-              }
-            >
-              <div>
-
-                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-                  <img
-                    src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a"
-                    alt="JBL TUNE 600BTNC"
-                    className="w-[285px] h-[245px]"
-                  />
-
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    ♡
-                  </button>
-
-                </div>
-
-                <div className="mt-3">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-[15px]">
-                      JBL TUNE 600BTNC
-                    </h3>
-
-                    <span className="font-bold text-[14px]">
-                      $59.00
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-gray-500 mt-2">
-                    Premium Bone Conduction Open Ear Bluetooth
-                  </p>
-
-                  <p className="text-green-600 text-sm mt-2">
-                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                  </p>
-
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-
-                      const cart =
-                        JSON.parse(localStorage.getItem("cart")) || [];
-
-                      cart.push({
-                        id: "5",
-                        name: "JBL TUNE 600BTNC",
-                        price: "$59.00",
-                        image:
-                          "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a",
-                      });
-
-                      localStorage.setItem("cart", JSON.stringify(cart));
-
-                      setAddedProducts([...addedProducts, "5"]);
-                    }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
-                      addedProducts.includes("5")
-                        ? "bg-[#064e3b] text-white"
-                        : "border border-gray-400"
-                    }`}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-
-              </div>
-            </Link>
-
-            {/* Product 6 */}
-            <Link
-              to="/product/6"
-              className={
-                matchesSearch("TAGRY Bluetooth") ? "" : "hidden"
-              }
-            >
-              <div>
-
-                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-                  <img
-                    src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
-                    alt="TAGRY Bluetooth"
-                    className="w-[285px] h-[245px]"
-                  />
-
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    ♡
-                  </button>
-
-                </div>
-
-                <div className="mt-3">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-[15px]">
-                      TAGRY Bluetooth
-                    </h3>
-
-                    <span className="font-bold text-[14px]">
-                      $109.00
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-gray-500 mt-2">
-                    256, 8 core GPU, 8 GB
-                  </p>
-
-                  <p className="text-green-600 text-sm mt-2">
-                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                  </p>
-
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-
-                      const cart =
-                        JSON.parse(localStorage.getItem("cart")) || [];
-
-                      cart.push({
-                        id: "6",
-                        name: "TAGRY Bluetooth",
-                        price: "$109.00",
-                        image:
-                          "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
-                      });
-
-                      localStorage.setItem("cart", JSON.stringify(cart));
-
-                      setAddedProducts([...addedProducts, "6"]);
-                    }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
-                      addedProducts.includes("6")
-                        ? "bg-[#064e3b] text-white"
-                        : "border border-gray-400"
-                    }`}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-
-              </div>
-            </Link>
-
-            {/* Product 7 */}
-            <Link
-              to="/product/7"
-              className={
-                matchesSearch("Monster MNFLEX") ? "" : "hidden"
-              }
-            >
-              <div>
-
-                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-                  <img
-                    src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1"
-                    alt="Monster MNFLEX"
-                    className="w-[285px] h-[245px]"
-                  />
-
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    ♡
-                  </button>
-
-                </div>
-
-                <div className="mt-3">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-[15px]">
-                      Monster MNFLEX
-                    </h3>
-
-                    <span className="font-bold text-[14px]">
-                      $89.75
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-gray-500 mt-2">
-                    Flex Active Noise Canceling Bluetooth
-                  </p>
-
-                  <p className="text-green-600 text-sm mt-2">
-                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                  </p>
-
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-
-                      const cart =
-                        JSON.parse(localStorage.getItem("cart")) || [];
-
-                      cart.push({
-                        id: "7",
-                        name: "Monster MNFLEX",
-                        price: "$89.75",
-                        image:
-                          "https://images.unsplash.com/photo-1484704849700-f032a568e944",
-                      });
-
-                      localStorage.setItem("cart", JSON.stringify(cart));
-
-                      setAddedProducts([...addedProducts, "7"]);
-                    }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
-                      addedProducts.includes("7")
-                        ? "bg-[#064e3b] text-white"
-                        : "border border-gray-400"
-                    }`}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-
-              </div>
-            </Link>
-
-            {/* Product 8 */}
-            <Link
-              to="/product/8"
-              className={
-                matchesSearch("Mpow CH6") ? "" : "hidden"
-              }
-            >
-              <div>
-
-                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-
-                  <img
-                    src="https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg"
-                    alt="Mpow CH6"
-                    className="w-[285px] h-[245px]"
-                  />
-
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    ♡
-                  </button>
-
-                </div>
-
-                <div className="mt-3">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-[15px]">
-                      Mpow CH6
-                    </h3>
-
-                    <span className="font-bold text-[14px]">
-                      $569.00
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-gray-500 mt-2">
-                    Kids Headphones
-                  </p>
-
-                  <p className="text-green-600 text-sm mt-2">
-                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                  </p>
-
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-
-                      const cart =
-                        JSON.parse(localStorage.getItem("cart")) || [];
-
-                      cart.push({
-                        id: "8",
-                        name: "Mpow CH6",
-                        price: "$569.00",
-                        image:
-                          "https://images.unsplash.com/photo-1484704849700-f032a568e944",
-                      });
-
-                      localStorage.setItem("cart", JSON.stringify(cart));
-
-                      setAddedProducts([...addedProducts, "8"]);
-                    }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
-                      addedProducts.includes("8")
-                        ? "bg-[#064e3b] text-white"
-                        : "border border-gray-400"
-                    }`}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-
-              </div>
-            </Link>
+              </Link>
+            ))}
 
           </div>
 
-          {/* No Results */}
-          {searchTerm &&
-            ![
-              "Wireless Earbuds, IPX8",
-              "AirPods Max",
-              "Bose BT Earphones",
-              "VIVEFOX Headphones",
-              "JBL TUNE 600BTNC",
-              "TAGRY Bluetooth",
-              "Monster MNFLEX",
-              "Mpow CH6",
-            ].some((name) => matchesSearch(name)) && (
-              <p className="text-center text-gray-500 mt-10">
-                No products found.
-              </p>
-            )}
+          {searchTerm && filteredProducts.length === 0 && (
+            <p className="text-center text-gray-500 mt-10">
+              No products found.
+            </p>
+          )}
 
         </div>
       </section>
@@ -814,11 +417,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/product/:id" element={<ProductDetails />} />
-
         <Route path="/cart" element={<Cart />} />
-
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
