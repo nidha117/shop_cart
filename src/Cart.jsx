@@ -35,7 +35,6 @@ function Cart() {
                                     className="w-28 h-28 object-cover rounded-lg cursor-pointer"
                                 />
                             </Link>
-
                             <div className="flex-1">
                                 <h2 className="font-semibold text-lg">
                                     {item.name}
@@ -44,7 +43,20 @@ function Cart() {
                                 <p className="font-bold mt-2">
                                     {item.price}
                                 </p>
+
+                                <button
+                                    onClick={() => {
+                                        const updatedCart = cart.filter((_, i) => i !== index);
+
+                                        localStorage.setItem("cart", JSON.stringify(updatedCart));
+                                        setCart(updatedCart);
+                                    }}
+                                    className="mt-3 text-red-500 text-sm"
+                                >
+                                    Remove
+                                </button>
                             </div>
+
                         </div>
                     ))}
 
