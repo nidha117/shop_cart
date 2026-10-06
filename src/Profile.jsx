@@ -1,4 +1,24 @@
+import { useState } from "react";
+
 function Profile() {
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [name, setName] = useState(
+    localStorage.getItem("profileName") || "Kadeeja Nidha"
+  );
+
+  const [email, setEmail] = useState(
+    localStorage.getItem("profileEmail") || "nidha@example.com"
+  );
+
+  const [phone, setPhone] = useState(
+    localStorage.getItem("profilePhone") || "+91 XXXXX XXXXX"
+  );
+
+  const [location, setLocation] = useState(
+    localStorage.getItem("profileLocation") || "Kerala, India"
+  );
+
   return (
     <div className="min-h-screen bg-gray-100 py-10">
 
@@ -19,11 +39,11 @@ function Profile() {
 
             <div>
               <h2 className="text-xl font-semibold">
-                Kadeeja Nidha
+                {name}
               </h2>
 
               <p className="text-gray-500 mt-1">
-                nidha@example.com
+                {email}
               </p>
             </div>
 
@@ -36,7 +56,7 @@ function Profile() {
               Personal Information
             </h3>
 
-            <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
 
               {/* Full Name */}
               <div>
@@ -44,9 +64,18 @@ function Profile() {
                   Full Name
                 </p>
 
-                <p className="font-medium">
-                  Kadeeja Nidha
-                </p>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="border rounded-lg px-3 py-2 w-full"
+                  />
+                ) : (
+                  <p className="font-medium">
+                    {name}
+                  </p>
+                )}
               </div>
 
               {/* Email */}
@@ -55,9 +84,18 @@ function Profile() {
                   Email
                 </p>
 
-                <p className="font-medium">
-                  nidha@example.com
-                </p>
+                {isEditing ? (
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="border rounded-lg px-3 py-2 w-full"
+                  />
+                ) : (
+                  <p className="font-medium">
+                    {email}
+                  </p>
+                )}
               </div>
 
               {/* Phone */}
@@ -66,9 +104,18 @@ function Profile() {
                   Phone
                 </p>
 
-                <p className="font-medium">
-                  +91 XXXXX XXXXX
-                </p>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="border rounded-lg px-3 py-2 w-full"
+                  />
+                ) : (
+                  <p className="font-medium">
+                    {phone}
+                  </p>
+                )}
               </div>
 
               {/* Location */}
@@ -77,19 +124,65 @@ function Profile() {
                   Location
                 </p>
 
-                <p className="font-medium">
-                  Kerala, India
-                </p>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    className="border rounded-lg px-3 py-2 w-full"
+                  />
+                ) : (
+                  <p className="font-medium">
+                    {location}
+                  </p>
+                )}
               </div>
 
             </div>
+          </div>
+
+          {/* Buttons */}
+          <div className="mt-8">
+
+            {isEditing ? (
+              <div className="flex gap-3">
+
+                <button
+                  onClick={() => {
+                    localStorage.setItem("profileName", name);
+                    localStorage.setItem("profileEmail", email);
+                    localStorage.setItem("profilePhone", phone);
+                    localStorage.setItem("profileLocation", location);
+
+                    setIsEditing(false);
+                  }}
+                  className="bg-[#064e3b] text-white px-6 py-2.5 rounded-full"
+                >
+                  Save Changes
+                </button>
+
+                <button
+                  onClick={() => setIsEditing(false)}
+                  className="border border-gray-300 px-6 py-2.5 rounded-full"
+                >
+                  Cancel
+                </button>
+
+              </div>
+            ) : (
+              <button
+                onClick={() => setIsEditing(true)}
+                className="bg-[#064e3b] text-white px-6 py-2.5 rounded-full"
+              >
+                Edit Profile
+              </button>
+            )}
 
           </div>
 
         </div>
 
       </div>
-
     </div>
   );
 }
