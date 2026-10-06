@@ -3,6 +3,7 @@ import heroImage from "./assets/hero-headphone.jpg.png";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
 import Cart from "./Cart";
+import Profile from "./Profile";
 
 
 
@@ -67,9 +68,9 @@ function Home() {
 
           {/* Right side */}
           <div className="flex items-center gap-5 text-[16px]">
-            <span className="cursor-pointer">
-              👤 Account
-            </span>
+           <Link to="/profile" className="cursor-pointer">
+  👤 Account
+</Link>
 
             <Link to="/cart" className="cursor-pointer">
               🛒 Cart
@@ -722,6 +723,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
 
         <Route path="/cart" element={<Cart />} />
+        <Route path="/profile" element={<Profile />} />
 
       </Routes>
     </BrowserRouter>
