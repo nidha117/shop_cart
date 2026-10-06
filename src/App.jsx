@@ -5,14 +5,16 @@ import ProductDetails from "./ProductDetails";
 import Cart from "./Cart";
 import Profile from "./Profile";
 
-
-
-
 function Home() {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const [addedProducts, setAddedProducts] = useState(() => {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  return cart.map((item) => item.id);
-});
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    return cart.map((item) => item.id);
+  });
+
+  const matchesSearch = (productName) =>
+    productName.toLowerCase().includes(searchTerm.toLowerCase());
 
   return (
     <div className="min-h-screen">
@@ -62,15 +64,17 @@ function Home() {
             <input
               type="text"
               placeholder="Search Product"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="bg-transparent outline-none w-full text-sm"
             />
           </div>
 
           {/* Right side */}
           <div className="flex items-center gap-5 text-[16px]">
-           <Link to="/profile" className="cursor-pointer">
-  👤 Account
-</Link>
+            <Link to="/profile" className="cursor-pointer">
+              👤 Account
+            </Link>
 
             <Link to="/cart" className="cursor-pointer">
               🛒 Cart
@@ -84,7 +88,6 @@ function Home() {
       <section className="w-full px-6 mt-4">
         <div className="max-w-7xl mx-auto h-[250px] bg-[#fff4e6] rounded-lg flex items-center justify-between overflow-hidden">
 
-          {/* Left Content */}
           <div className="ml-16">
             <h2 className="text-4xl font-bold text-[#064e3b] leading-tight">
               Grab Upto 50% Off On
@@ -97,7 +100,6 @@ function Home() {
             </button>
           </div>
 
-          {/* Right Image */}
           <div className="h-full mr-16">
             <div className="h-[250px] w-[380px] flex items-end justify-center ml-auto mr-8">
               <img
@@ -115,7 +117,6 @@ function Home() {
       <section className="w-full bg-white">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
 
-          {/* Left Filters */}
           <div className="flex items-center gap-3">
 
             <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
@@ -171,7 +172,6 @@ function Home() {
 
           </div>
 
-          {/* Sort */}
           <button className="bg-white border border-black px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
             Sort by
             <span className="w-1.5 h-1.5 border-r border-b border-gray-600 rotate-45 -translate-y-0.5"></span>
@@ -184,15 +184,22 @@ function Home() {
       <section className="w-full bg-white py-8">
         <div className="max-w-7xl mx-auto px-6">
 
-          <h2 className="text-2xl font-bold text-black mb-6">
-            Headphones For You!
-          </h2>
+          {searchTerm && (
+            <p className="text-gray-500 mb-4">
+              Search results for: "{searchTerm}"
+            </p>
+          )}
 
           {/* Products */}
           <div className="grid grid-cols-4 gap-5">
 
             {/* Product 1 */}
-            <Link to="/product/1">
+            <Link
+              to="/product/1"
+              className={
+                matchesSearch("Wireless Earbuds, IPX8") ? "" : "hidden"
+              }
+            >
               <div className="cursor-pointer">
 
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
@@ -232,23 +239,26 @@ function Home() {
                     onClick={(e) => {
                       e.preventDefault();
 
-                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                      const cart =
+                        JSON.parse(localStorage.getItem("cart")) || [];
 
                       cart.push({
                         id: "1",
                         name: "Wireless Earbuds, IPX8",
                         price: "$89.00",
-                        image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
+                        image:
+                          "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
                       });
 
                       localStorage.setItem("cart", JSON.stringify(cart));
 
                       setAddedProducts([...addedProducts, "1"]);
                     }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("1")
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
+                      addedProducts.includes("1")
                         ? "bg-[#064e3b] text-white"
                         : "border border-gray-400"
-                      }`}
+                    }`}
                   >
                     Add to Cart
                   </button>
@@ -258,7 +268,10 @@ function Home() {
             </Link>
 
             {/* Product 2 */}
-            <Link to="/product/2">
+            <Link
+              to="/product/2"
+              className={matchesSearch("AirPods Max") ? "" : "hidden"}
+            >
               <div>
 
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
@@ -298,23 +311,26 @@ function Home() {
                     onClick={(e) => {
                       e.preventDefault();
 
-                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                      const cart =
+                        JSON.parse(localStorage.getItem("cart")) || [];
 
                       cart.push({
                         id: "2",
                         name: "AirPods Max",
                         price: "$559.00",
-                        image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+                        image:
+                          "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
                       });
 
                       localStorage.setItem("cart", JSON.stringify(cart));
 
                       setAddedProducts([...addedProducts, "2"]);
                     }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("2")
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
+                      addedProducts.includes("2")
                         ? "bg-[#064e3b] text-white"
                         : "border border-gray-400"
-                      }`}
+                    }`}
                   >
                     Add to Cart
                   </button>
@@ -324,7 +340,12 @@ function Home() {
             </Link>
 
             {/* Product 3 */}
-            <Link to="/product/3">
+            <Link
+              to="/product/3"
+              className={
+                matchesSearch("Bose BT Earphones") ? "" : "hidden"
+              }
+            >
               <div>
 
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
@@ -364,23 +385,26 @@ function Home() {
                     onClick={(e) => {
                       e.preventDefault();
 
-                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                      const cart =
+                        JSON.parse(localStorage.getItem("cart")) || [];
 
                       cart.push({
                         id: "3",
                         name: "Bose BT Earphones",
                         price: "$289.00",
-                        image: "https://images.unsplash.com/photo-1583394838336-acd977736f90",
+                        image:
+                          "https://images.unsplash.com/photo-1583394838336-acd977736f90",
                       });
 
                       localStorage.setItem("cart", JSON.stringify(cart));
 
                       setAddedProducts([...addedProducts, "3"]);
                     }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("3")
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
+                      addedProducts.includes("3")
                         ? "bg-[#064e3b] text-white"
                         : "border border-gray-400"
-                      }`}
+                    }`}
                   >
                     Add to Cart
                   </button>
@@ -390,7 +414,12 @@ function Home() {
             </Link>
 
             {/* Product 4 */}
-            <Link to="/product/4">
+            <Link
+              to="/product/4"
+              className={
+                matchesSearch("VIVEFOX Headphones") ? "" : "hidden"
+              }
+            >
               <div>
 
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
@@ -430,23 +459,26 @@ function Home() {
                     onClick={(e) => {
                       e.preventDefault();
 
-                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                      const cart =
+                        JSON.parse(localStorage.getItem("cart")) || [];
 
                       cart.push({
                         id: "4",
                         name: "VIVEFOX Headphones",
                         price: "$39.00",
-                        image: "https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg",
+                        image:
+                          "https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg",
                       });
 
                       localStorage.setItem("cart", JSON.stringify(cart));
 
                       setAddedProducts([...addedProducts, "4"]);
                     }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("4")
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
+                      addedProducts.includes("4")
                         ? "bg-[#064e3b] text-white"
                         : "border border-gray-400"
-                      }`}
+                    }`}
                   >
                     Add to Cart
                   </button>
@@ -456,10 +488,16 @@ function Home() {
             </Link>
 
             {/* Product 5 */}
-            {/* Product 5 */}
-            <Link to="/product/5">
+            <Link
+              to="/product/5"
+              className={
+                matchesSearch("JBL TUNE 600BTNC") ? "" : "hidden"
+              }
+            >
               <div>
+
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+
                   <img
                     src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a"
                     alt="JBL TUNE 600BTNC"
@@ -469,6 +507,7 @@ function Home() {
                   <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                     ♡
                   </button>
+
                 </div>
 
                 <div className="mt-3">
@@ -494,35 +533,45 @@ function Home() {
                     onClick={(e) => {
                       e.preventDefault();
 
-                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                      const cart =
+                        JSON.parse(localStorage.getItem("cart")) || [];
 
                       cart.push({
                         id: "5",
                         name: "JBL TUNE 600BTNC",
                         price: "$59.00",
-                        image: "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a",
+                        image:
+                          "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a",
                       });
 
                       localStorage.setItem("cart", JSON.stringify(cart));
 
                       setAddedProducts([...addedProducts, "5"]);
                     }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("5")
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
+                      addedProducts.includes("5")
                         ? "bg-[#064e3b] text-white"
                         : "border border-gray-400"
-                      }`}
+                    }`}
                   >
                     Add to Cart
                   </button>
                 </div>
+
               </div>
             </Link>
 
-
             {/* Product 6 */}
-            <Link to="/product/6">
+            <Link
+              to="/product/6"
+              className={
+                matchesSearch("TAGRY Bluetooth") ? "" : "hidden"
+              }
+            >
               <div>
+
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+
                   <img
                     src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
                     alt="TAGRY Bluetooth"
@@ -532,6 +581,7 @@ function Home() {
                   <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                     ♡
                   </button>
+
                 </div>
 
                 <div className="mt-3">
@@ -557,34 +607,45 @@ function Home() {
                     onClick={(e) => {
                       e.preventDefault();
 
-                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                      const cart =
+                        JSON.parse(localStorage.getItem("cart")) || [];
 
                       cart.push({
                         id: "6",
                         name: "TAGRY Bluetooth",
                         price: "$109.00",
-                        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+                        image:
+                          "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
                       });
 
                       localStorage.setItem("cart", JSON.stringify(cart));
 
                       setAddedProducts([...addedProducts, "6"]);
                     }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("6")
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
+                      addedProducts.includes("6")
                         ? "bg-[#064e3b] text-white"
                         : "border border-gray-400"
-                      }`}
+                    }`}
                   >
                     Add to Cart
                   </button>
                 </div>
+
               </div>
             </Link>
 
             {/* Product 7 */}
-            <Link to="/product/7">
+            <Link
+              to="/product/7"
+              className={
+                matchesSearch("Monster MNFLEX") ? "" : "hidden"
+              }
+            >
               <div>
+
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+
                   <img
                     src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1"
                     alt="Monster MNFLEX"
@@ -594,6 +655,7 @@ function Home() {
                   <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                     ♡
                   </button>
+
                 </div>
 
                 <div className="mt-3">
@@ -619,34 +681,45 @@ function Home() {
                     onClick={(e) => {
                       e.preventDefault();
 
-                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                      const cart =
+                        JSON.parse(localStorage.getItem("cart")) || [];
 
                       cart.push({
                         id: "7",
                         name: "Monster MNFLEX",
                         price: "$89.75",
-                        image: "https://images.unsplash.com/photo-1484704849700-f032a568e944",
+                        image:
+                          "https://images.unsplash.com/photo-1484704849700-f032a568e944",
                       });
 
                       localStorage.setItem("cart", JSON.stringify(cart));
 
                       setAddedProducts([...addedProducts, "7"]);
                     }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("7")
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
+                      addedProducts.includes("7")
                         ? "bg-[#064e3b] text-white"
                         : "border border-gray-400"
-                      }`}
+                    }`}
                   >
                     Add to Cart
                   </button>
                 </div>
+
               </div>
             </Link>
 
             {/* Product 8 */}
-            <Link to="/product/8">
+            <Link
+              to="/product/8"
+              className={
+                matchesSearch("Mpow CH6") ? "" : "hidden"
+              }
+            >
               <div>
+
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+
                   <img
                     src="https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg"
                     alt="Mpow CH6"
@@ -656,6 +729,7 @@ function Home() {
                   <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
                     ♡
                   </button>
+
                 </div>
 
                 <div className="mt-3">
@@ -676,40 +750,62 @@ function Home() {
                   <p className="text-green-600 text-sm mt-2">
                     ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
                   </p>
+
                   <button
                     onClick={(e) => {
                       e.preventDefault();
 
-                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                      const cart =
+                        JSON.parse(localStorage.getItem("cart")) || [];
 
                       cart.push({
                         id: "8",
                         name: "Mpow CH6",
                         price: "$569.00",
-                        image: "https://images.unsplash.com/photo-1484704849700-f032a568e944",
+                        image:
+                          "https://images.unsplash.com/photo-1484704849700-f032a568e944",
                       });
 
                       localStorage.setItem("cart", JSON.stringify(cart));
 
                       setAddedProducts([...addedProducts, "8"]);
                     }}
-                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("8")
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${
+                      addedProducts.includes("8")
                         ? "bg-[#064e3b] text-white"
                         : "border border-gray-400"
-                      }`}
+                    }`}
                   >
                     Add to Cart
                   </button>
                 </div>
+
               </div>
             </Link>
-          </div>
-        </div>
 
+          </div>
+
+          {/* No Results */}
+          {searchTerm &&
+            ![
+              "Wireless Earbuds, IPX8",
+              "AirPods Max",
+              "Bose BT Earphones",
+              "VIVEFOX Headphones",
+              "JBL TUNE 600BTNC",
+              "TAGRY Bluetooth",
+              "Monster MNFLEX",
+              "Mpow CH6",
+            ].some((name) => matchesSearch(name)) && (
+              <p className="text-center text-gray-500 mt-10">
+                No products found.
+              </p>
+            )}
+
+        </div>
       </section>
 
     </div>
-
   );
 }
 
@@ -719,15 +815,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        {/* Dynamic Product Route */}
         <Route path="/product/:id" element={<ProductDetails />} />
 
         <Route path="/cart" element={<Cart />} />
-        <Route path="/profile" element={<Profile />} />
 
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
-export default App; 
+export default App;
