@@ -7,6 +7,7 @@ import Profile from "./Profile";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortOption, setSortOption] = useState("default");
   const [showSort, setShowSort] = useState(false);
 
   const [addedProducts, setAddedProducts] = useState(() => {
@@ -109,6 +110,18 @@ function Home() {
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    if (sortOption === "low") {
+      return a.price - b.price;
+    }
+
+    if (sortOption === "high") {
+      return b.price - a.price;
+    }
+
+    return 0;
+  });
+
   const handleAddToCart = (product) => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -131,6 +144,7 @@ function Home() {
       <nav className="w-full border-b bg-white">
         <div className="max-w-7xl mx-auto px-6 py-0 flex items-center justify-between">
 
+          {/* Logo + Shopcart */}
           <div className="flex items-center w-auto">
             <img
               src="https://i.pinimg.com/originals/11/ba/64/11ba64a31b83b3497045c2e3d8f5d6f3.png"
@@ -143,6 +157,7 @@ function Home() {
             </h1>
           </div>
 
+          {/* Navigation */}
           <div className="flex items-center gap-10 text-[16px]">
             <a href="#" className="text-gray-700 hover:text-black">
               Categories
@@ -161,6 +176,7 @@ function Home() {
             </a>
           </div>
 
+          {/* Search */}
           <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 w-64 text-[17px]">
             <span className="text-gray-400 mr-2">
               ⌕
@@ -175,6 +191,7 @@ function Home() {
             />
           </div>
 
+          {/* Right side */}
           <div className="flex items-center gap-5 text-[16px]">
             <Link to="/profile" className="cursor-pointer">
               👤 Account
@@ -291,21 +308,30 @@ function Home() {
               <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
 
                 <button
-                  onClick={() => setShowSort(false)}
+                  onClick={() => {
+                    setSortOption("default");
+                    setShowSort(false);
+                  }}
                   className="block w-full text-left px-4 py-2 hover:bg-gray-100"
                 >
                   Default
                 </button>
 
                 <button
-                  onClick={() => setShowSort(false)}
+                  onClick={() => {
+                    setSortOption("low");
+                    setShowSort(false);
+                  }}
                   className="block w-full text-left px-4 py-2 hover:bg-gray-100"
                 >
                   Price: Low to High
                 </button>
 
                 <button
-                  onClick={() => setShowSort(false)}
+                  onClick={() => {
+                    setSortOption("high");
+                    setShowSort(false);
+                  }}
                   className="block w-full text-left px-4 py-2 hover:bg-gray-100"
                 >
                   Price: High to Low
@@ -328,9 +354,10 @@ function Home() {
             </p>
           )}
 
+          {/* Products */}
           <div className="grid grid-cols-4 gap-5">
 
-            {filteredProducts.map((product) => (
+            {sortedProducts.map((product) => (
               <Link
                 key={product.id}
                 to={`/product/${product.id}`}
@@ -399,7 +426,8 @@ function Home() {
 
           </div>
 
-          {searchTerm && filteredProducts.length === 0 && (
+          {/* No Results */}
+          {searchTerm && sortedProducts.length === 0 && (
             <p className="text-center text-gray-500 mt-10">
               No products found.
             </p>
@@ -417,8 +445,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route path="/product/:id" element={<ProductDetails />} />
+
         <Route path="/cart" element={<Cart />} />
+
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
