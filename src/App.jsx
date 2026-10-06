@@ -1,17 +1,18 @@
+import { useState } from "react";
 import heroImage from "./assets/hero-headphone.jpg.png";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
-import Product2 from "./assets/pages/Product2";
-import Product3 from "./assets/pages/Product3";
-import Product4 from "./assets/pages/Product4";
-import Product5 from "./assets/pages/Product5";
-import Product6 from "./assets/pages/Product6";
-import Product7 from "./assets/pages/Product7";
-import Product8 from "./assets/pages/product8";
+import Cart from "./Cart";
+
 
 
 
 function Home() {
+  const [addedProducts, setAddedProducts] = useState(() => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  return cart.map((item) => item.id);
+});
+
   return (
     <div className="min-h-screen">
 
@@ -70,9 +71,9 @@ function Home() {
               👤 Account
             </span>
 
-            <span className="cursor-pointer">
+            <Link to="/cart" className="cursor-pointer">
               🛒 Cart
-            </span>
+            </Link>
           </div>
 
         </div>
@@ -190,7 +191,7 @@ function Home() {
           <div className="grid grid-cols-4 gap-5">
 
             {/* Product 1 */}
-           <Link to="/product/1">
+            <Link to="/product/1">
               <div className="cursor-pointer">
 
                 <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
@@ -226,7 +227,28 @@ function Home() {
                     ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
                   </p>
 
-                  <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                      cart.push({
+                        id: "1",
+                        name: "Wireless Earbuds, IPX8",
+                        price: "$89.00",
+                        image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
+                      });
+
+                      localStorage.setItem("cart", JSON.stringify(cart));
+
+                      setAddedProducts([...addedProducts, "1"]);
+                    }}
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("1")
+                        ? "bg-[#064e3b] text-white"
+                        : "border border-gray-400"
+                      }`}
+                  >
                     Add to Cart
                   </button>
                 </div>
@@ -271,7 +293,28 @@ function Home() {
                     ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
                   </p>
 
-                  <button className="mt-3 px-5 py-2 bg-[#064d3b] text-white rounded-full text-sm">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                      cart.push({
+                        id: "2",
+                        name: "AirPods Max",
+                        price: "$559.00",
+                        image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+                      });
+
+                      localStorage.setItem("cart", JSON.stringify(cart));
+
+                      setAddedProducts([...addedProducts, "2"]);
+                    }}
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("2")
+                        ? "bg-[#064e3b] text-white"
+                        : "border border-gray-400"
+                      }`}
+                  >
                     Add to Cart
                   </button>
                 </div>
@@ -316,7 +359,28 @@ function Home() {
                     ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
                   </p>
 
-                  <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                      cart.push({
+                        id: "3",
+                        name: "Bose BT Earphones",
+                        price: "$289.00",
+                        image: "https://images.unsplash.com/photo-1583394838336-acd977736f90",
+                      });
+
+                      localStorage.setItem("cart", JSON.stringify(cart));
+
+                      setAddedProducts([...addedProducts, "3"]);
+                    }}
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("3")
+                        ? "bg-[#064e3b] text-white"
+                        : "border border-gray-400"
+                      }`}
+                  >
                     Add to Cart
                   </button>
                 </div>
@@ -361,7 +425,28 @@ function Home() {
                     ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
                   </p>
 
-                  <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                      cart.push({
+                        id: "4",
+                        name: "VIVEFOX Headphones",
+                        price: "$39.00",
+                        image: "https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg",
+                      });
+
+                      localStorage.setItem("cart", JSON.stringify(cart));
+
+                      setAddedProducts([...addedProducts, "4"]);
+                    }}
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("4")
+                        ? "bg-[#064e3b] text-white"
+                        : "border border-gray-400"
+                      }`}
+                  >
                     Add to Cart
                   </button>
                 </div>
@@ -370,199 +455,276 @@ function Home() {
             </Link>
 
             {/* Product 5 */}
-           {/* Product 5 */}
-<Link to="/product/5">
-  <div>
-              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-                <img
-                  src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a"
-                  alt="JBL TUNE 600BTNC"
-                  className="w-[285px] h-[245px]"
-                />
+            {/* Product 5 */}
+            <Link to="/product/5">
+              <div>
+                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+                  <img
+                    src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a"
+                    alt="JBL TUNE 600BTNC"
+                    className="w-[285px] h-[245px]"
+                  />
 
-                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                  ♡
-                </button>
-              </div>
-
-              <div className="mt-3">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold text-[15px]">
-                    JBL TUNE 600BTNC
-                  </h3>
-
-                  <span className="font-bold text-[14px]">
-                    $59.00
-                  </span>
+                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                    ♡
+                  </button>
                 </div>
 
-                <p className="text-xs text-gray-500 mt-2">
-                  Premium Bone Conduction Open Ear Bluetooth
-                </p>
+                <div className="mt-3">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-semibold text-[15px]">
+                      JBL TUNE 600BTNC
+                    </h3>
 
-                <p className="text-green-600 text-sm mt-2">
-                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                </p>
+                    <span className="font-bold text-[14px]">
+                      $59.00
+                    </span>
+                  </div>
 
-                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
-                  Add to Cart
-                </button>
+                  <p className="text-xs text-gray-500 mt-2">
+                    Premium Bone Conduction Open Ear Bluetooth
+                  </p>
+
+                  <p className="text-green-600 text-sm mt-2">
+                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                  </p>
+
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                      cart.push({
+                        id: "5",
+                        name: "JBL TUNE 600BTNC",
+                        price: "$59.00",
+                        image: "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a",
+                      });
+
+                      localStorage.setItem("cart", JSON.stringify(cart));
+
+                      setAddedProducts([...addedProducts, "5"]);
+                    }}
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("5")
+                        ? "bg-[#064e3b] text-white"
+                        : "border border-gray-400"
+                      }`}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-              </div>
-</Link>
+            </Link>
 
 
             {/* Product 6 */}
-           <Link to="/product/6">
-  <div>
-              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-                <img
-                  src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
-                  alt="TAGRY Bluetooth"
-                  className="w-[285px] h-[245px]"
-                />
+            <Link to="/product/6">
+              <div>
+                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+                  <img
+                    src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df"
+                    alt="TAGRY Bluetooth"
+                    className="w-[285px] h-[245px]"
+                  />
 
-                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                  ♡
-                </button>
-              </div>
-
-              <div className="mt-3">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold text-[15px]">
-                    TAGRY Bluetooth
-                  </h3>
-
-                  <span className="font-bold text-[14px]">
-                    $109.00
-                  </span>
+                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                    ♡
+                  </button>
                 </div>
 
-                <p className="text-xs text-gray-500 mt-2">
-                  256, 8 core GPU, 8 GB
-                </p>
+                <div className="mt-3">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-semibold text-[15px]">
+                      TAGRY Bluetooth
+                    </h3>
 
-                <p className="text-green-600 text-sm mt-2">
-                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                </p>
+                    <span className="font-bold text-[14px]">
+                      $109.00
+                    </span>
+                  </div>
 
-                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
-                  Add to Cart
-                </button>
+                  <p className="text-xs text-gray-500 mt-2">
+                    256, 8 core GPU, 8 GB
+                  </p>
+
+                  <p className="text-green-600 text-sm mt-2">
+                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                  </p>
+
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                      cart.push({
+                        id: "6",
+                        name: "TAGRY Bluetooth",
+                        price: "$109.00",
+                        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+                      });
+
+                      localStorage.setItem("cart", JSON.stringify(cart));
+
+                      setAddedProducts([...addedProducts, "6"]);
+                    }}
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("6")
+                        ? "bg-[#064e3b] text-white"
+                        : "border border-gray-400"
+                      }`}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-           </div>
-</Link>
+            </Link>
 
             {/* Product 7 */}
             <Link to="/product/7">
-  <div>
-              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-                <img
-                  src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1"
-                  alt="Monster MNFLEX"
-                  className="w-[285px] h-[245px]"
-                />
+              <div>
+                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+                  <img
+                    src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1"
+                    alt="Monster MNFLEX"
+                    className="w-[285px] h-[245px]"
+                  />
 
-                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                  ♡
-                </button>
-              </div>
-
-              <div className="mt-3">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold text-[15px]">
-                    Monster MNFLEX
-                  </h3>
-
-                  <span className="font-bold text-[14px]">
-                    $89.75
-                  </span>
+                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                    ♡
+                  </button>
                 </div>
 
-                <p className="text-xs text-gray-500 mt-2">
-                  Flex Active Noise Canceling Bluetooth
-                </p>
+                <div className="mt-3">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-semibold text-[15px]">
+                      Monster MNFLEX
+                    </h3>
 
-                <p className="text-green-600 text-sm mt-2">
-                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                </p>
+                    <span className="font-bold text-[14px]">
+                      $89.75
+                    </span>
+                  </div>
 
-                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
-                  Add to Cart
-                </button>
+                  <p className="text-xs text-gray-500 mt-2">
+                    Flex Active Noise Canceling Bluetooth
+                  </p>
+
+                  <p className="text-green-600 text-sm mt-2">
+                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                  </p>
+
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                      cart.push({
+                        id: "7",
+                        name: "Monster MNFLEX",
+                        price: "$89.75",
+                        image: "https://images.unsplash.com/photo-1484704849700-f032a568e944",
+                      });
+
+                      localStorage.setItem("cart", JSON.stringify(cart));
+
+                      setAddedProducts([...addedProducts, "7"]);
+                    }}
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("7")
+                        ? "bg-[#064e3b] text-white"
+                        : "border border-gray-400"
+                      }`}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-             </div>
-</Link>
+            </Link>
 
             {/* Product 8 */}
-            <Link to="/product/8"> 
-  <div>
-              <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
-                <img
-                  src="https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg"
-                  alt="Mpow CH6"
-                  className="w-[285px] h-[245px]"
-                />
+            <Link to="/product/8">
+              <div>
+                <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
+                  <img
+                    src="https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg"
+                    alt="Mpow CH6"
+                    className="w-[285px] h-[245px]"
+                  />
 
-                <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                  ♡
-                </button>
-              </div>
-
-              <div className="mt-3">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold text-[15px]">
-                    Mpow CH6
-                  </h3>
-
-                  <span className="font-bold text-[14px]">
-                    $569.00
-                  </span>
+                  <button className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                    ♡
+                  </button>
                 </div>
 
-                <p className="text-xs text-gray-500 mt-2">
-                  Kids Headphones
-                </p>
+                <div className="mt-3">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-semibold text-[15px]">
+                      Mpow CH6
+                    </h3>
 
-                <p className="text-green-600 text-sm mt-2">
-                  ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
-                </p>
+                    <span className="font-bold text-[14px]">
+                      $569.00
+                    </span>
+                  </div>
 
-                <button className="mt-3 px-5 py-2 border border-gray-400 rounded-full text-sm">
-                  Add to Cart
-                </button>
+                  <p className="text-xs text-gray-500 mt-2">
+                    Kids Headphones
+                  </p>
+
+                  <p className="text-green-600 text-sm mt-2">
+                    ★★★★★ <span className="text-gray-500 text-xs">(121)</span>
+                  </p>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                      cart.push({
+                        id: "8",
+                        name: "Mpow CH6",
+                        price: "$569.00",
+                        image: "https://images.unsplash.com/photo-1484704849700-f032a568e944",
+                      });
+
+                      localStorage.setItem("cart", JSON.stringify(cart));
+
+                      setAddedProducts([...addedProducts, "8"]);
+                    }}
+                    className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes("8")
+                        ? "bg-[#064e3b] text-white"
+                        : "border border-gray-400"
+                      }`}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-            </div>
-</Link>
+            </Link>
           </div>
         </div>
-        
+
       </section>
 
     </div>
-   
+
   );
 }
 
 function App() {
   return (
-   <BrowserRouter>
-  <Routes>
-    <Route path="/" element={<Home />} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-    {/* Dynamic Product Route */}
-    <Route path="/product/:id" element={<ProductDetails />} />
+        {/* Dynamic Product Route */}
+        <Route path="/product/:id" element={<ProductDetails />} />
 
-    {/* Old routes — ippo delete cheyyanda */}
-    <Route path="/product/2" element={<Product2 />} />
-    <Route path="/product/3" element={<Product3 />} />
-    <Route path="/product/4" element={<Product4 />} />
-    <Route path="/product/5" element={<Product5 />} />
-    <Route path="/product/6" element={<Product6 />} />
-    <Route path="/product/7" element={<Product7 />} />
-    <Route path="/product/8" element={<Product8 />} />
-  </Routes>
-</BrowserRouter>
+        <Route path="/cart" element={<Cart />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
