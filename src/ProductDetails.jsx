@@ -34,7 +34,7 @@ import blue8 from "./assets/blue8.jpeg";
 
 
 const products = {
-  
+
   1: {
     name: "Wireless Earbuds, IPX8",
     price: "$549.00 or 99.99/month",
@@ -51,7 +51,7 @@ const products = {
   },
 
 
- 2: {
+  2: {
     name: "Airpods- Max",
     price: "$559.00",
     description:
@@ -59,109 +59,110 @@ const products = {
     rating: 121,
     images: [
       "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
-     white2,
-     red2,
-    blue2,
-     
+      white2,
+      red2,
+      blue2,
+
     ],
   },
 
-   3: {
-  name: "Bose BT Earphones",
-  price: "$289.00",
-  description:
-    "Enjoy clear sound and comfortable listening with these wireless Bose Bluetooth earphones.",
-  rating: 121,
+  3: {
+    name: "Bose BT Earphones",
+    price: "$289.00",
+    description:
+      "Enjoy clear sound and comfortable listening with these wireless Bose Bluetooth earphones.",
+    rating: 121,
 
-  images: [
-    "https://images.unsplash.com/photo-1583394838336-acd977736f90",
-   
-    whiteHeadphone3,
-     redHeadphone3,
-    blueHeadphone3,
-  ],
-},
-4: {
-  name: "VIVEFOX Headphones",
-  price: "$39.00",
-  description:
-    "Wired Stereo Headsets With Mic for clear sound and comfortable everyday listening.",
-  rating: 121,
+    images: [
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90",
 
-  images: [
-    "https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg",
-     white4,
-    red4,
-    blue4,
-  ],
-},
+      whiteHeadphone3,
+      redHeadphone3,
+      blueHeadphone3,
+    ],
+  },
+  4: {
+    name: "VIVEFOX Headphones",
+    price: "$39.00",
+    description:
+      "Wired Stereo Headsets With Mic for clear sound and comfortable everyday listening.",
+    rating: 121,
 
-5: {
-  name: "JBL TUNE 600BTNC",
-  price: "$59.00",
-  description:
-    "Premium Bone Conduction Open Ear Bluetooth headphones with comfortable design and clear sound.",
-  rating: 121,
+    images: [
+      "https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg",
+      white4,
+      red4,
+      blue4,
+    ],
+  },
 
-  images: [
-    "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a",
-    white5,
-     red5,
-    blue5,
-  ],
-},
-6: {
-  name: "TAGRY Bluetooth",
-  price: "$109.00",
-  description: "256, 8 core GPU, 8 GB",
-  rating: 121,
+  5: {
+    name: "JBL TUNE 600BTNC",
+    price: "$59.00",
+    description:
+      "Premium Bone Conduction Open Ear Bluetooth headphones with comfortable design and clear sound.",
+    rating: 121,
 
-  images: [
-    "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
-   white2,
-     red2,
-    blue2,
-    
-  ],
-},
-7: {
-  name: "Monster MNFLEX",
-  price: "$89.75",
-  description: "Flex Active Noise Canceling Bluetooth",
-  rating: 121,
+    images: [
+      "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a",
+      white5,
+      red5,
+      blue5,
+    ],
+  },
+  6: {
+    name: "TAGRY Bluetooth",
+    price: "$109.00",
+    description: "256, 8 core GPU, 8 GB",
+    rating: 121,
 
-  images: [
-    "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1",
-    white7,
-    red7,
-    blue7,
-  ],
-},
-8: {
-  name: "Mpow CH6",
-  price: "$569.00",
-  description: "Kids Headphones",
-  rating: 121,
+    images: [
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+      white2,
+      red2,
+      blue2,
 
-  images: [
-    "https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg",
-     white8,
-     red8,
-    blue8,
-  ],
-},
+    ],
+  },
+  7: {
+    name: "Monster MNFLEX",
+    price: "$89.75",
+    description: "Flex Active Noise Canceling Bluetooth",
+    rating: 121,
+
+    images: [
+      "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1",
+      white7,
+      red7,
+      blue7,
+    ],
+  },
+  8: {
+    name: "Mpow CH6",
+    price: "$569.00",
+    description: "Kids Headphones",
+    rating: 121,
+
+    images: [
+      "https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg",
+      white8,
+      red8,
+      blue8,
+    ],
+  },
 };
 
 function ProductDetails() {
   const { id } = useParams();
   const product = products[id];
   const navigate = useNavigate();
-  
+
 
 
   const [selectedImage, setSelectedImage] = useState(
     product.images[0]
   );
+  const [quantity, setQuantity] = useState(1);
 
 
   return (
@@ -274,26 +275,26 @@ function ProductDetails() {
 
             <hr className="my-4" />
 
-           {/* Color */}
-<h3 className="text-base font-semibold">
-  Choose a Color
-</h3>
+            {/* Color */}
+            <h3 className="text-base font-semibold">
+              Choose a Color
+            </h3>
 
-<div className="flex gap-3 mt-3">
-  {["bg-black", "bg-white border border-gray-300", "bg-red-500", "bg-blue-500"].map(
-    (color, index) => (
-      <button
-        key={index}
-        onClick={() => {
-          if (product.images[index]) {
-            setSelectedImage(product.images[index]);
-          }
-        }}
-        className={`w-8 h-8 rounded-full ${color}`}
-      ></button>
-    )
-  )}
-</div>
+            <div className="flex gap-3 mt-3">
+              {["bg-black", "bg-white border border-gray-300", "bg-red-500", "bg-blue-500"].map(
+                (color, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      if (product.images[index]) {
+                        setSelectedImage(product.images[index]);
+                      }
+                    }}
+                    className={`w-8 h-8 rounded-full ${color}`}
+                  ></button>
+                )
+              )}
+            </div>
 
             <hr className="my-4" />
 
@@ -301,13 +302,23 @@ function ProductDetails() {
             <div className="flex items-center gap-4">
 
               <div className="flex items-center justify-between w-[135px] bg-gray-100 rounded-full px-5 py-2.5">
-                <button className="text-base">−</button>
+                <button
+                  onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                  className="text-base"
+                >
+                  −
+                </button>
 
                 <span className="font-semibold text-sm">
-                  1
+                  {quantity}
                 </span>
 
-                <button className="text-base">+</button>
+                <button
+                  onClick={() => setQuantity((prev) => prev + 1)}
+                  className="text-base"
+                >
+                  +
+                </button>
               </div>
 
               <div>
@@ -329,25 +340,25 @@ function ProductDetails() {
                 Buy Now
               </button>
 
-           <button
-  onClick={() => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+              <button
+                onClick={() => {
+                  const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    cart.push({
-      id: id,
-      name: product.name,
-      price: product.price,
-      image: product.images[0],
-    });
+                  cart.push({
+                    id: id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.images[0],
+                  });
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+                  localStorage.setItem("cart", JSON.stringify(cart));
 
-    navigate("/cart");
-  }}
-  className="flex-1 border border-[#064e3b] text-[#064e3b] py-2.5 rounded-full text-xs font-semibold"
->
-  Add to Cart
-</button>
+                  navigate("/cart");
+                }}
+                className="flex-1 border border-[#064e3b] text-[#064e3b] py-2.5 rounded-full text-xs font-semibold"
+              >
+                Add to Cart
+              </button>
 
             </div>
 
