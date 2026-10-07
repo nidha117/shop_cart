@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 import blueHeadphone from "./assets/blue-headphone.png";
 import whiteHeadphone from "./assets/white-headphone.png";
@@ -167,16 +167,27 @@ function ProductDetails() {
 
   return (
     <div className="min-h-screen bg-white">
-
-      {/* Breadcrumb */}
-      <div className="max-w-5xl mx-auto px-5 pt-4">
-        <p className="text-xs text-gray-500">
-          Electronics / Audio / Headphones / Shop Headphones by type /
-          <span className="text-black font-semibold">
-            {product.name}
-          </span>
-        </p>
-      </div>
+      <p className="text-xs text-gray-500">
+        <Link to="/" className="hover:text-black">
+          Electronics
+        </Link>{" "}
+        /{" "}
+        <Link to="/" className="hover:text-black">
+          Audio
+        </Link>{" "}
+        /{" "}
+        <a href="/#categories" className="hover:text-black">
+          Headphones
+        </a>{" "}
+        /{" "}
+        <a href="/#categories" className="hover:text-black">
+          Shop Headphones by type
+        </a>{" "}
+        /{" "}
+        <span className="text-black font-semibold">
+          {product.name}
+        </span>
+      </p>
 
       {/* Product Details */}
       <div className="max-w-5xl mx-auto px-5 mt-3">
@@ -336,13 +347,13 @@ function ProductDetails() {
             {/* Buttons */}
             <div className="flex gap-3 mt-4">
 
-              
-<button
-  onClick={() => navigate("/cart")}
-  className="flex-1 bg-[#064e3b] text-white py-2.5 rounded-full text-xs font-semibold"
->
-  Buy Now
-</button>
+
+              <button
+                onClick={() => navigate("/cart")}
+                className="flex-1 bg-[#064e3b] text-white py-2.5 rounded-full text-xs font-semibold"
+              >
+                Buy Now
+              </button>
               <button
                 onClick={() => {
                   const cart = JSON.parse(localStorage.getItem("cart")) || [];
