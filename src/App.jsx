@@ -235,11 +235,9 @@ function Home() {
               <img
                 src={heroImage}
                 alt="Headphones"
-                className="h-full w-auto object-contain scale-130"
-              />
+                className="h-full w-auto object-contain scale-130" />
             </div>
           </div>
-
         </div>
       </section>
 
@@ -281,25 +279,7 @@ function Home() {
 
             <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
               All Filters
-
-              <span className="flex flex-col gap-[1px]">
-                <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-[1px] bg-gray-700"></span>
-                  <span className="w-[3px] h-[3px] rounded-full bg-gray-700"></span>
-                </span>
-
-                <span className="flex items-center gap-1">
-                  <span className="w-[3px] h-[3px] rounded-full bg-gray-700"></span>
-                  <span className="w-2.5 h-[1px] bg-gray-700"></span>
-                </span>
-
-                <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-[1px] bg-gray-700"></span>
-                  <span className="w-[3px] h-[3px] rounded-full bg-gray-700"></span>
-                </span>
-              </span>
             </button>
-
           </div>
 
           {/* Sort By */}
@@ -345,11 +325,9 @@ function Home() {
                 >
                   Price: High to Low
                 </button>
-
               </div>
             )}
           </div>
-
         </div>
       </section>
 
@@ -429,9 +407,7 @@ function Home() {
                     >
                       Add to Cart
                     </button>
-
                   </div>
-
                 </div>
               </Link>
             ))}

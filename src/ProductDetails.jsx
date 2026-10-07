@@ -163,6 +163,7 @@ function ProductDetails() {
     product.images[0]
   );
   const [quantity, setQuantity] = useState(1);
+  const [showReturnDetails, setShowReturnDetails] = useState(false);
 
 
   return (
@@ -381,10 +382,10 @@ function ProductDetails() {
 
               <div className="px-3 py-2 border-b">
                 <h3 className="font-semibold text-[11px]">
-                  🚚 Free Delivery
+                  🚚  Free Delivery
                 </h3>
 
-                <p className="text-[10px] text-gray-600 mt-1 underline">
+                <p className="text-[10px] text-gray-600 mt-1 ">
                   Enter your Postal code for Delivery Availability
                 </p>
               </div>
@@ -396,8 +397,18 @@ function ProductDetails() {
 
                 <p className="text-[10px] text-gray-600 mt-1">
                   Free 30days Delivery Returns.{" "}
-                  <span className="underline">Details</span>
+                  <span
+                    onClick={() => setShowReturnDetails(!showReturnDetails)}
+                    className="underline cursor-pointer"
+                  >
+                    Details
+                  </span>
                 </p>
+                {showReturnDetails && (
+                  <p className="text-[10px] text-gray-600 mt-2">
+                    Items can be returned within 30 days of delivery.
+                  </p>
+                )}
               </div>
 
             </div>
@@ -411,5 +422,4 @@ function ProductDetails() {
 }
 
 export default ProductDetails;
-
 
