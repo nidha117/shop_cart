@@ -215,10 +215,12 @@ function Home() {
               <br />
               Selected Headphone
             </h2>
-
-            <button className="mt-5 bg-[#064e3b] text-white px-7 py-3 rounded-full text-sm">
-              Buy Now
-            </button>
+<a
+  href="#categories"
+  className="mt-5 inline-block bg-[#064e3b] text-white px-7 py-3 rounded-full text-sm"
+>
+  Buy Now
+</a>
           </div>
 
           <div className="h-full mr-16">
