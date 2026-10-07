@@ -9,6 +9,7 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("default");
   const [showSort, setShowSort] = useState(false);
+  const [wishlist, setWishlist] = useState([]);
 
   const [addedProducts, setAddedProducts] = useState(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -121,7 +122,13 @@ function Home() {
 
     return 0;
   });
-
+  const handleWishlist = (productId) => {
+  if (wishlist.includes(productId)) {
+    setWishlist(wishlist.filter((id) => id !== productId));
+  } else {
+    setWishlist([...wishlist, productId]);
+  }
+};
   const handleAddToCart = (product) => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -215,12 +222,12 @@ function Home() {
               <br />
               Selected Headphone
             </h2>
-<a
-  href="#categories"
-  className="mt-5 inline-block bg-[#064e3b] text-white px-7 py-3 rounded-full text-sm"
->
-  Buy Now
-</a>
+            <a
+              href="#categories"
+              className="mt-5 inline-block bg-[#064e3b] text-white px-7 py-3 rounded-full text-sm"
+            >
+              Buy Now
+            </a>
           </div>
 
           <div className="h-full mr-16">
@@ -376,10 +383,13 @@ function Home() {
                     />
 
                     <button
-                      onClick={(e) => e.preventDefault()}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleWishlist(product.id);
+                      }}
                       className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center"
                     >
-                      ♡
+                      {wishlist.includes(product.id) ? "♥" : "♡"}
                     </button>
 
                   </div>
@@ -413,8 +423,8 @@ function Home() {
                         handleAddToCart(product);
                       }}
                       className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes(product.id)
-                          ? "bg-[#064e3b] text-white"
-                          : "border border-gray-400"
+                        ? "bg-[#064e3b] text-white"
+                        : "border border-gray-400"
                         }`}
                     >
                       Add to Cart
