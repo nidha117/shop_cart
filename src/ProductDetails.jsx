@@ -336,10 +336,13 @@ function ProductDetails() {
             {/* Buttons */}
             <div className="flex gap-3 mt-4">
 
-              <button className="flex-1 bg-[#064e3b] text-white py-2.5 rounded-full text-xs font-semibold">
-                Buy Now
-              </button>
-
+              
+<button
+  onClick={() => navigate("/cart")}
+  className="flex-1 bg-[#064e3b] text-white py-2.5 rounded-full text-xs font-semibold"
+>
+  Buy Now
+</button>
               <button
                 onClick={() => {
                   const cart = JSON.parse(localStorage.getItem("cart")) || [];
