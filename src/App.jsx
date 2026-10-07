@@ -159,9 +159,9 @@ function Home() {
 
           {/* Navigation */}
           <div className="flex items-center gap-10 text-[16px]">
-            <a href="#" className="text-gray-700 hover:text-black">
-              Categories
-            </a>
+           <a href="#categories" className="text-gray-700 hover:text-black">
+  Categories
+</a>
 
             <a href="#" className="text-gray-700 hover:text-black">
               Deals
@@ -345,7 +345,8 @@ function Home() {
       </section>
 
       {/* Headphones Section */}
-      <section className="w-full bg-white py-8">
+     
+<section id="categories" className="w-full bg-white py-8">
         <div className="max-w-7xl mx-auto px-6">
 
           {searchTerm && (
