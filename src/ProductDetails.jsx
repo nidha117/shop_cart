@@ -164,7 +164,8 @@ function ProductDetails() {
   );
   const [quantity, setQuantity] = useState(1);
   const [showReturnDetails, setShowReturnDetails] = useState(false);
-
+  const [postalCode, setPostalCode] = useState("");
+  const [deliveryMessage, setDeliveryMessage] = useState("");
 
   return (
     <div className="min-h-screen bg-white">
@@ -385,9 +386,28 @@ function ProductDetails() {
                   🚚  Free Delivery
                 </h3>
 
-                <p className="text-[10px] text-gray-600 mt-1 ">
-                  Enter your Postal code for Delivery Availability
-                </p>
+                <div className="mt-1">
+                  <input
+                    type="text"
+                    placeholder="Enter Postal code"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                    className="border rounded px-2 py-1 text-[10px] w-32"
+                  />
+
+                  <button
+                    onClick={() => setDeliveryMessage("Delivery available")}
+                    className="ml-2 border border-gray-300 px-2 py-1 rounded text-[10px]"
+                  >
+                    Check
+                  </button>
+
+                  {deliveryMessage && (
+                    <p className="text-[10px] text-green-600 mt-1">
+                      {deliveryMessage}
+                    </p>
+                  )}
+                </div>
               </div>
 
               <div className="px-3 py-2">
