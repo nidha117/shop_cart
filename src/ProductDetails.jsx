@@ -199,7 +199,7 @@ function ProductDetails() {
           <div>
 
             {/* Main Image */}
-            <div className="h-[420px] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden relative">
+            <div className="h-[400px] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden relative">
 
               {/* Previous Arrow */}
               <button
@@ -396,7 +396,7 @@ function ProductDetails() {
                   />
 
                   <button
-                    onClick={() => setDeliveryMessage("Delivery available")}
+                    onClick={() => setDeliveryMessage("Delivery available ")}
                     className="ml-2 border border-gray-300 px-2 py-1 rounded text-[10px]"
                   >
                     Check
@@ -442,4 +442,3 @@ function ProductDetails() {
 }
 
 export default ProductDetails;
-

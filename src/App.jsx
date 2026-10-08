@@ -122,13 +122,15 @@ function Home() {
 
     return 0;
   });
+
   const handleWishlist = (productId) => {
-  if (wishlist.includes(productId)) {
-    setWishlist(wishlist.filter((id) => id !== productId));
-  } else {
-    setWishlist([...wishlist, productId]);
-  }
-};
+    if (wishlist.includes(productId)) {
+      setWishlist(wishlist.filter((id) => id !== productId));
+    } else {
+      setWishlist([...wishlist, productId]);
+    }
+  };
+
   const handleAddToCart = (product) => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -166,25 +168,46 @@ function Home() {
 
           {/* Navigation */}
           <div className="flex items-center gap-10 text-[16px]">
-            <a href="#categories" className="text-gray-700 hover:text-black">
+
+            <a
+              href="#categories"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("categories").scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+              className="text-gray-700 hover:text-black cursor-pointer"
+            >
               Categories
             </a>
 
-            <a href="#" className="text-gray-700 hover:text-black">
+            <a
+              href="#"
+              className="text-gray-700 hover:text-black"
+            >
               Deals
             </a>
 
-            <a href="#" className="text-gray-700 hover:text-black">
+            <a
+              href="#"
+              className="text-gray-700 hover:text-black"
+            >
               What's New
             </a>
 
-            <a href="#" className="text-gray-700 hover:text-black">
+            <a
+              href="#"
+              className="text-gray-700 hover:text-black"
+            >
               Delivery
             </a>
+
           </div>
 
           {/* Search */}
-          <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 w-64 text-[17px]">
+          <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 w-64 text-[17px] cursor-pointer">
+
             <span className="text-gray-400 mr-2">
               ⌕
             </span>
@@ -196,17 +219,26 @@ function Home() {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="bg-transparent outline-none w-full text-sm"
             />
+
           </div>
 
           {/* Right side */}
           <div className="flex items-center gap-5 text-[16px]">
-            <Link to="/profile" className="cursor-pointer">
+
+            <Link
+              to="/profile"
+              className="cursor-pointer"
+            >
               👤 Account
             </Link>
 
-            <Link to="/cart" className="cursor-pointer">
+            <Link
+              to="/cart"
+              className="cursor-pointer"
+            >
               🛒 Cart
             </Link>
+
           </div>
 
         </div>
@@ -214,35 +246,47 @@ function Home() {
 
       {/* Hero Section */}
       <section className="w-full px-6 mt-4">
+
         <div className="max-w-7xl mx-auto h-[250px] bg-[#fff4e6] rounded-lg flex items-center justify-between overflow-hidden">
 
           <div className="ml-16">
+
             <h2 className="text-4xl font-bold text-[#064e3b] leading-tight">
               Grab Upto 50% Off On
               <br />
               Selected Headphone
             </h2>
+
             <a
               href="#categories"
               className="mt-5 inline-block bg-[#064e3b] text-white px-7 py-3 rounded-full text-sm"
             >
               Buy Now
             </a>
+
           </div>
 
           <div className="h-full mr-16">
+
             <div className="h-[250px] w-[380px] flex items-end justify-center ml-auto mr-8">
+
               <img
                 src={heroImage}
                 alt="Headphones"
-                className="h-full w-auto object-contain scale-130" />
+                className="h-full w-auto object-contain scale-130"
+              />
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
       {/* Product Filter */}
       <section className="w-full bg-white">
+
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
 
           <div className="flex items-center gap-3">
@@ -280,13 +324,15 @@ function Home() {
             <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
               All Filters
             </button>
+
           </div>
 
           {/* Sort By */}
           <div className="relative">
+
             <button
               onClick={() => setShowSort(!showSort)}
-              className="bg-white border border-black px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2"
+              className="bg-white border border-black px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2 cursor-pointer"
             >
               Sort by
 
@@ -325,15 +371,22 @@ function Home() {
                 >
                   Price: High to Low
                 </button>
+
               </div>
             )}
+
           </div>
+
         </div>
+
       </section>
 
       {/* Headphones Section */}
+      <section
+        id="categories"
+        className="w-full bg-white py-8"
+      >
 
-      <section id="categories" className="w-full bg-white py-8">
         <div className="max-w-7xl mx-auto px-6">
 
           {searchTerm && (
@@ -346,10 +399,12 @@ function Home() {
           <div className="grid grid-cols-4 gap-5">
 
             {sortedProducts.map((product) => (
+
               <Link
                 key={product.id}
                 to={`/product/${product.id}`}
               >
+
                 <div className="cursor-pointer">
 
                   <div className="relative w-[270px] h-[250px] bg-gray-100 rounded-lg flex items-center justify-center">
@@ -365,7 +420,7 @@ function Home() {
                         e.preventDefault();
                         handleWishlist(product.id);
                       }}
-                      className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center"
+                      className="absolute top-3 right-3 w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer"
                     >
                       {wishlist.includes(product.id) ? "♥" : "♡"}
                     </button>
@@ -375,6 +430,7 @@ function Home() {
                   <div className="mt-3">
 
                     <div className="flex justify-between items-center">
+
                       <h3 className="font-semibold text-[15px]">
                         {product.name}
                       </h3>
@@ -382,6 +438,7 @@ function Home() {
                       <span className="font-bold text-[14px]">
                         {product.priceText}
                       </span>
+
                     </div>
 
                     <p className="text-xs text-gray-500 mt-2">
@@ -400,16 +457,21 @@ function Home() {
                         e.preventDefault();
                         handleAddToCart(product);
                       }}
-                      className={`mt-3 px-5 py-2 rounded-full text-sm ${addedProducts.includes(product.id)
-                        ? "bg-[#064e3b] text-white"
-                        : "border border-gray-400"
-                        }`}
+                      className={`mt-3 px-5 py-2 rounded-full text-sm cursor-pointer ${
+                        addedProducts.includes(product.id)
+                          ? "bg-[#064e3b] text-white"
+                          : "border border-gray-400"
+                      }`}
                     >
                       Add to Cart
                     </button>
+
                   </div>
+
                 </div>
+
               </Link>
+
             ))}
 
           </div>
@@ -422,6 +484,7 @@ function Home() {
           )}
 
         </div>
+
       </section>
 
     </div>
@@ -431,15 +494,31 @@ function Home() {
 function App() {
   return (
     <BrowserRouter>
+
       <Routes>
-        <Route path="/" element={<Home />} />
 
-        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
 
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/product/:id"
+          element={<ProductDetails />}
+        />
 
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/cart"
+          element={<Cart />}
+        />
+
+        <Route
+          path="/profile"
+          element={<Profile />}
+        />
+
       </Routes>
+
     </BrowserRouter>
   );
 }
