@@ -227,8 +227,7 @@ function Home() {
 
             <Link
               to="/profile"
-              className="cursor-pointer"
-            >
+              className="cursor-pointer">
               👤 Account
             </Link>
 
@@ -319,7 +318,6 @@ function Home() {
             <button className="bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2">
               All Filters
             </button>
-
           </div>
 
           {/* Sort By */}
@@ -375,6 +373,7 @@ function Home() {
         </div>
 
       </section>
+    
 
       {/* Headphones Section */}
       <section
@@ -452,6 +451,7 @@ function Home() {
                         e.preventDefault();
                         handleAddToCart(product);
                       }}
+                    
                       className={`mt-3 px-5 py-2 rounded-full text-sm cursor-pointer ${
                         addedProducts.includes(product.id)
                           ? "bg-[#064e3b] text-white"
