@@ -273,15 +273,10 @@ function Home() {
               <img
                 src={heroImage}
                 alt="Headphones"
-                className="h-full w-auto object-contain scale-130"
-              />
-
+                className="h-full w-auto object-contain scale-130"/>
             </div>
-
           </div>
-
         </div>
-
       </section>
 
       {/* Product Filter */}
