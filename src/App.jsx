@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import heroImage from "./assets/hero-headphone.jpg.png";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
@@ -10,103 +10,42 @@ function Home() {
   const [sortOption, setSortOption] = useState("default");
   const [showSort, setShowSort] = useState(false);
   const [wishlist, setWishlist] = useState([]);
+  const [products, setProducts] = useState([]);
+const [isLoading, setIsLoading] = useState(true);
+const [error, setError] = useState("");
 
   const [addedProducts, setAddedProducts] = useState(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     return cart.map((item) => item.id);
-  });
+  }); 
+ useEffect(() => {
+  fetch("https://dummyjson.com/products/category/mobile-accessories")
+    .then((res) => res.json())
+    .then((data) => {
+      const audioProducts = data.products
+        .filter((p) =>
+          /airpods|earphones|headphones|beats|speaker|homepod|charger|magsafe|watch|phone case|selfie stick/i.test(
+            p.title + " " + p.tags?.join(" ")
+          )
+        )
+        .slice(0, 8)
+        .map((p) => ({
+          id: String(p.id),
+          name: p.title,
+          price: p.price,
+          priceText: `$${p.price.toFixed(2)}`,
+          image: p.thumbnail,
+          cartImage: p.thumbnail,
+          description: p.description,
+          rating: p.rating,
+        }));
 
-  const products = [
-    {
-      id: "1",
-      name: "Wireless Earbuds, IPX8",
-      price: 89,
-      priceText: "$89.00",
-      image:
-        "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
-      description: "Organic Cotton, fairtrade certified",
-      cartImage:
-        "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
-    },
-    {
-      id: "2",
-      name: "AirPods Max",
-      price: 559,
-      priceText: "$559.00",
-      image:
-        "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
-      description: "A perfect balance of high-fidelity audio",
-      cartImage:
-        "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
-    },
-    {
-      id: "3",
-      name: "Bose BT Earphones",
-      price: 289,
-      priceText: "$289.00",
-      image:
-        "https://images.unsplash.com/photo-1583394838336-acd977736f90",
-      description: "Table with air purifier, stained veneer/black",
-      cartImage:
-        "https://images.unsplash.com/photo-1583394838336-acd977736f90",
-    },
-    {
-      id: "4",
-      name: "VIVEFOX Headphones",
-      price: 39,
-      priceText: "$39.00",
-      image:
-        "https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg",
-      description: "Wired Stereo Headsets With Mic",
-      cartImage:
-        "https://cdn.mos.cms.futurecdn.net/NLpAsbaFXNVdkhFZbLrnrV.jpg",
-    },
-    {
-      id: "5",
-      name: "JBL TUNE 600BTNC",
-      price: 59,
-      priceText: "$59.00",
-      image:
-        "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a",
-      description: "Premium Bone Conduction Open Ear Bluetooth",
-      cartImage:
-        "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a",
-    },
-    {
-      id: "6",
-      name: "TAGRY Bluetooth",
-      price: 109,
-      priceText: "$109.00",
-      image:
-        "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
-      description: "256, 8 core GPU, 8 GB",
-      cartImage:
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
-    },
-    {
-      id: "7",
-      name: "Monster MNFLEX",
-      price: 89.75,
-      priceText: "$89.75",
-      image:
-        "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1",
-      description: "Flex Active Noise Canceling Bluetooth",
-      cartImage:
-        "https://images.unsplash.com/photo-1484704849700-f032a568e944",
-    },
-    {
-      id: "8",
-      name: "Mpow CH6",
-      price: 569,
-      priceText: "$569.00",
-      image:
-        "https://makerworld.bblmw.com/makerworld/model/US4d3c692ec4aa67/design/2024-07-06_93457225c973b8.jpeg",
-      description: "Kids Headphones",
-      cartImage:
-        "https://images.unsplash.com/photo-1484704849700-f032a568e944",
-    },
-  ];
-
+      setProducts(audioProducts);
+    })
+    .catch(() => setError("Unable to load products."))
+    .finally(() => setIsLoading(false));
+}, []);
+ 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -130,6 +69,7 @@ function Home() {
       setWishlist([...wishlist, productId]);
     }
   };
+
 
   const handleAddToCart = (product) => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
