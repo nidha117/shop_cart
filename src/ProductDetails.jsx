@@ -8,7 +8,6 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(""); 
-  const [selectedColor, setSelectedColor] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [showReturnDetails, setShowReturnDetails] = useState(false);
   const [postalCode, setPostalCode] = useState("");
@@ -214,45 +213,7 @@ function ProductDetails() {
             </p>
 
             <hr className="my-4" />
-            {/* Color selection */}
-            <h3 className="text-base font-semibold">
-              Color
-            </h3>
-
-            <div className="flex gap-3 mt-3">
-              {product.images.slice(0, 4).map((image, index) => {
-                const colors = [
-                  { name: "Black", bg: "bg-black" },
-                  { name: "White", bg: "bg-white" },
-                  { name: "Blue", bg: "bg-blue-600" },
-                  { name: "Red", bg: "bg-red-600" },
-                ];
-
-                return (
-                  <button
-                    key={`${image}-${index}`}
-                    onClick={() => {
-                      setSelectedColor(index);
-                      setSelectedImage(image);
-                    }}
-                    title={colors[index].name}
-                    aria-label={colors[index].name}
-                    className={`w-8 h-8 rounded-full border-2 ${colors[index].bg
-                      } ${selectedColor === index
-                        ? "border-green-800 ring-2 ring-green-300"
-                        : "border-gray-300"
-                      }`}
-                  />
-                );
-              })}
-            </div>
-
-            <p className="text-sm text-gray-500 mt-2">
-              Selected color: {["Black", "White", "Blue", "Red"][selectedColor]}
-            </p>
-
-            <hr className="my-4" />
-
+           
             {/* Quantity */}
             <div className="flex items-center gap-4">
               <div className="flex items-center justify-between w-[135px] bg-gray-100 rounded-full px-5 py-2.5">

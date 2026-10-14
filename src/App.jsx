@@ -11,8 +11,8 @@ function Home() {
   const [showSort, setShowSort] = useState(false);
   const [wishlist, setWishlist] = useState([]);
   const [products, setProducts] = useState([]);
-const [isLoading, setIsLoading] = useState(true);
-const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const [addedProducts, setAddedProducts] = useState(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
