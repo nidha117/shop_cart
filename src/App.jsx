@@ -95,7 +95,6 @@ function Home() {
       {/* Navbar */}
       <nav className="w-full border-b bg-white">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-3">
-
           {/* Logo */}
           <Link to="/" className="flex items-center shrink-0">
             <img
@@ -110,16 +109,23 @@ function Home() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-8 text-sm lg:text-base">
-            <a href="#categories" onClick={(e) => {
-              e.preventDefault();
-              scrollToCategories();
-            }} className="text-gray-700 hover:text-black">
+            <a
+              href="#categories"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToCategories();
+              }}
+              className="text-gray-700 hover:text-black"
+            >
               Categories
             </a>
             <a href="#deals" className="text-gray-700 hover:text-black">
               Deals
             </a>
-            <a href="#categories" className="text-gray-700 hover:text-black whitespace-nowrap">
+            <a
+              href="#categories"
+              className="text-gray-700 hover:text-black whitespace-nowrap"
+            >
               What's New
             </a>
             <a href="#delivery" className="text-gray-700 hover:text-black">
@@ -141,15 +147,32 @@ function Home() {
 
           {/* Desktop Account and Cart */}
           <div className="hidden md:flex items-center gap-3 lg:gap-5 text-sm lg:text-base">
-            <Link to="/profile">Account</Link>
-            <Link to="/cart">Cart</Link>
+            <Link to="/profile" className="text-gray-700 hover:text-black">
+              Account
+            </Link>
+            <Link to="/cart" className="text-gray-700 hover:text-black">
+              Cart
+            </Link>
           </div>
 
-          {/* Mobile Icons */}
-          <div className="flex md:hidden items-center gap-4">
-            <Link to="/cart" aria-label="Cart" className="text-xl">
+          {/* Mobile Account, Cart and Menu */}
+          <div className="flex md:hidden items-center gap-3">
+            <Link
+              to="/profile"
+              aria-label="Account"
+              className="text-sm text-gray-700 whitespace-nowrap"
+            >
+              Account
+            </Link>
+
+            <Link
+              to="/cart"
+              aria-label="Cart"
+              className="text-xl"
+            >
               🛒
             </Link>
+
             <button
               type="button"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -164,13 +187,24 @@ function Home() {
           {/* Mobile Menu */}
           {menuOpen && (
             <div className="w-full md:hidden flex flex-col gap-4 border-t pt-4 pb-3 text-sm">
-              <a href="#categories" onClick={(e) => {
-                e.preventDefault();
-                scrollToCategories();
-              }}>Categories</a>
-              <a href="#deals" onClick={() => setMenuOpen(false)}>Deals</a>
-              <a href="#categories" onClick={() => setMenuOpen(false)}>What's New</a>
-              <a href="#delivery" onClick={() => setMenuOpen(false)}>Delivery</a>
+              <a
+                href="#categories"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToCategories();
+                }}
+              >
+                Categories
+              </a>
+              <a href="#deals" onClick={() => setMenuOpen(false)}>
+                Deals
+              </a>
+              <a href="#categories" onClick={() => setMenuOpen(false)}>
+                What's New
+              </a>
+              <a href="#delivery" onClick={() => setMenuOpen(false)}>
+                Delivery
+              </a>
 
               <input
                 type="text"
@@ -179,10 +213,6 @@ function Home() {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="bg-gray-100 rounded-full px-4 py-2 outline-none w-full"
               />
-
-              <Link to="/profile" onClick={() => setMenuOpen(false)}>
-                Account
-              </Link>
             </div>
           )}
         </div>
@@ -191,7 +221,6 @@ function Home() {
       {/* Hero Section */}
       <section className="w-full px-3 sm:px-6 mt-4">
         <div className="max-w-7xl mx-auto h-[230px] sm:h-[280px] bg-[#fff4e6] rounded-lg flex items-center overflow-hidden">
-
           <div className="w-[60%] sm:w-[58%] pl-4 sm:pl-8 md:pl-12 z-10">
             <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#064e3b] leading-tight">
               Grab Upto 50% Off On
@@ -201,6 +230,10 @@ function Home() {
 
             <a
               href="#categories"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToCategories();
+              }}
               className="mt-4 sm:mt-5 inline-block bg-[#064e3b] text-white px-4 sm:px-7 py-2 sm:py-3 rounded-full text-xs sm:text-sm"
             >
               Buy Now
@@ -220,11 +253,17 @@ function Home() {
       {/* Product Filters */}
       <section className="w-full bg-white">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-4">
-
           <div className="flex items-center justify-between gap-3">
-            {/* Horizontally scrollable filters */}
             <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto flex-1 min-w-0 pb-2">
-              {["Headphone Type", "Price", "Review", "Color", "Material", "Offer", "All Filters"].map((filter) => (
+              {[
+                "Headphone Type",
+                "Price",
+                "Review",
+                "Color",
+                "Material",
+                "Offer",
+                "All Filters",
+              ].map((filter) => (
                 <button
                   key={filter}
                   className="shrink-0 bg-gray-100 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm text-gray-700"
@@ -283,7 +322,6 @@ function Home() {
       {/* Headphones Section */}
       <section id="categories" className="w-full bg-white py-5 sm:py-8">
         <div className="max-w-7xl mx-auto px-3 sm:px-6">
-
           {searchTerm && (
             <p className="text-gray-500 mb-4 text-sm">
               Search results for: "{searchTerm}"
@@ -298,7 +336,6 @@ function Home() {
             <p className="text-center text-red-500 py-10">{error}</p>
           )}
 
-          {/* Responsive Product Grid */}
           {!isLoading && !error && (
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-6 sm:gap-5">
               {sortedProducts.map((product) => (
@@ -308,7 +345,6 @@ function Home() {
                   className="block min-w-0"
                 >
                   <div className="cursor-pointer min-w-0">
-
                     <div className="relative w-full aspect-square bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
                       <img
                         src={product.image}
@@ -381,8 +417,6 @@ function Home() {
           )}
         </div>
       </section>
-
-      
     </>
   );
 }
